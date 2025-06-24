@@ -6,7 +6,9 @@
   <p><em>[Replace with board name or logo]</em></p>
 </div>
 
-UNIT JUN R3 with atmega328p is a versatile and modular development board designed for rapid prototyping with a format ARDUINO UNO. It is ideal for embedded systems education and wearable devices. This board combines flexible power options, modern connectivity, and accessible interfaces to accelerate your hardware development, and have a matrxix 5x5 neopixels that can be used for various applications like visual feedback, indicators, or simple displays.
+UNIT JUN R3 is a versatile and modular development board based on the ATmega328P microcontroller, compatible with the UNO-style form factor. Designed for rapid prototyping, it is well-suited for embedded systems education, interactive projects, and wearable technology. The board offers flexible power input options, modern connectivity, and user-friendly interfaces to streamline development workflows. It also features an integrated 5×5 NeoPixel LED matrix, ideal for creating visual indicators, feedback systems, or simple dynamic displays.
+
+
 
 | Feature                 | Description                                                   |
 |------------------------|---------------------------------------------------------------|
