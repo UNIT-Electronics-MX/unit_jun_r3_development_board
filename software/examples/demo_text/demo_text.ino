@@ -512,7 +512,7 @@ void setup() {
 void loop() {
   // === FIESTAS PATRIAS OPTIMIZADO PARA MATRIZ 5x5 ===
 
-  
+  git branch 
   // 2. Efecto bandera mexicana horizontal estática
   banderaMexicana(30); // Bandera más corta
   delay(300);
