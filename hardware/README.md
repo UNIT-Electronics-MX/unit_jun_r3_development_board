@@ -46,11 +46,12 @@
 
 ## 📏 Board Dimensions
 <div align="center">
-<a href="#"><img src="./resources/unit_dimension_v_0_0_1_ue0081_Jun R3.png" width="500px"><br/>Dimensions</a>
+<a href="./resources/unit_dimension_v_0_0_1_ue0081_Jun R3.png"><img src="./resources/unit_dimension_v_0_0_1_ue0081_Jun R3.png" width="500px"><br/>Dimensions</a>
 </div>
-# 📃 Board Topology
+
+## 📃 Board Topology
 <div align="center">
-<a href="#"><img src="./resources/unit_topology_v_0_0_1_ue0081_Jun R3.png" width="500px"><br/>Topology</a>
+<a href="./resources/unit_topology_v_0_0_1_ue0081_Jun R3.png"><img src="./resources/unit_topology_v_0_0_1_ue0081_Jun R3.png" width="500px"><br/>Topology</a>
 
 | Ref.  | Description                                                                 |
 |-------|-----------------------------------------------------------------------------|
