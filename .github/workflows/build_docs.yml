@@ -23,10 +23,10 @@ jobs:
       with:
         python-version: '3.10'
 
-    - name: Install dependencies (Python + LaTeX + Ghostscript)
+    - name: Install dependencies (Python + LaTeX + Ghostscript + ImageMagick)
       run: |
         sudo apt-get update
-        sudo apt-get install -y texlive-latex-extra texlive-fonts-recommended texlive-lang-english ghostscript latexmk
+        sudo apt-get install -y texlive-latex-extra texlive-fonts-recommended texlive-lang-english ghostscript latexmk imagemagick
         pip install -r software/documentation/requirements.txt
         pip install -r software/sphinx/requirements.txt
 
@@ -38,6 +38,16 @@ jobs:
       env:
         REPO_NAME: ${{ github.event.repository.name }}
       run: |
+        # Create placeholder images if they don't exist to prevent LaTeX errors
+        mkdir -p images
+        for img in top.png pinout.png dimension.png; do
+          if [ ! -f "images/$img" ]; then
+            echo "Warning: Creating placeholder for missing image: images/$img"
+            # Create a simple 1x1 transparent PNG placeholder
+            convert -size 300x200 xc:transparent "images/$img" || echo "ImageMagick not available, skipping placeholder creation"
+          fi
+        done
+        
         python test_readme.py
         python generate_pdf.py
         gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/printer \
@@ -83,7 +93,23 @@ jobs:
       run: |
         git config --global user.name "GitHub Actions"
         git config --global user.email "actions@github.com"
-        git pull origin main
+        
+        # Reset any uncommitted changes to avoid merge conflicts
+        git reset --hard HEAD
+        
+        # Fetch latest changes
+        git fetch origin main
+        
+        # Merge changes from origin/main
+        git merge origin/main --no-edit || echo "No changes to merge"
+        
+        # Add generated docs
         git add docs/
-        git commit -m "Deploy full documentation and product brief [skip ci]" || echo "No changes"
-        git push origin main
+        
+        # Check if there are changes to commit
+        if git diff --staged --quiet; then
+          echo "No changes to commit"
+        else
+          git commit -m "Deploy full documentation and product brief [skip ci]"
+          git push origin main
+        fi
