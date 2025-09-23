@@ -2836,64 +2836,18 @@ class ProfessionalDatasheetGenerator:
             if intro_section:
                 content = intro_section['content']
                 # Extraer características implícitas del texto descriptivo
-                if 'four key parameters' in content.lower() or '4-in-1' in content:
-                    features.append({
-                        'title': '4-in-1 Environmental Sensing',
-                        'desc': 'Temperature, humidity, pressure, and gas detection in one module',
-                        'icon': '🌡️'
-                    })
+                extracted_features = self.extract_features_detailed(content)
+                features.extend(extracted_features)
                 
-                if 'i2c' in content.lower() or 'spi' in content.lower():
-                    features.append({
-                        'title': 'Digital Communication',
-                        'desc': 'I²C and SPI interfaces for easy integration',
-                        'icon': '🔗'
-                    })
-                
-                if 'low power' in content.lower() or 'ultra-low' in content.lower():
-                    features.append({
-                        'title': 'Ultra-Low Power',
-                        'desc': 'Optimized for battery-operated applications',
-                        'icon': '🔋'
-                    })
-                
-                if 'ai' in content.lower() or 'machine learning' in content.lower():
-                    features.append({
-                        'title': 'AI-Enabled Gas Classification',
-                        'desc': 'Support for Bosch BME AI-Studio for custom gas analysis',
-                        'icon': '🤖'
-                    })
-                
-                if 'arduino' in content.lower() or 'esp32' in content.lower() or 'raspberry' in content.lower():
-                    features.append({
-                        'title': 'Platform Compatibility',
-                        'desc': 'Works with Arduino, ESP32, Raspberry Pi, and other platforms',
-                        'icon': '⚡'
-                    })
         
         # Si aún no hay características, agregar características genéricas basadas en el tipo de sensor
         if not features:
             features = [
-                {
-                    'title': 'High Accuracy Sensing',
-                    'desc': 'Precise environmental parameter measurement',
-                    'icon': '🎯'
-                },
-                {
-                    'title': 'Compact Design',
-                    'desc': 'Space-efficient module for embedded applications',
-                    'icon': '📐'
-                },
-                {
-                    'title': 'Easy Integration',
-                    'desc': 'Standard interfaces and connectors',
-                    'icon': '🔧'
-                },
-                {
-                    'title': 'Industrial Grade',
-                    'desc': 'Reliable operation in demanding environments',
-                    'icon': '🏭'
-                }
+              {
+                    'title': 'feature not specified',
+                    'desc': 'No specific features found',
+                    'icon': '❓'
+              }
             ]
         
         # AGREGAR APLICACIONES A LAS CARACTERÍSTICAS
