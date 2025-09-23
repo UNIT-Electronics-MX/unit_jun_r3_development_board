@@ -125,8 +125,20 @@ jobs:
         git config --local user.name "github-actions[bot]"
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         
+        # Fetch latest changes to avoid conflicts
+        git fetch origin main
+        
+        # Reset any uncommitted changes and merge latest
+        git reset --hard HEAD
+        git merge origin/main --no-edit || echo "Already up to date"
+        
         git add docs/
         if ! git diff --staged --quiet; then
           git commit -m "Deploy documentation [skip ci]"
-          git push origin main
+          # Retry push with pull if needed
+          git push origin main || {
+            echo "Push failed, pulling and retrying..."
+            git pull origin main --no-edit
+            git push origin main
+          }
         fi
