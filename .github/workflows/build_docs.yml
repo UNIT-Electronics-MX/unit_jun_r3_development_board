@@ -36,6 +36,11 @@ jobs:
       with:
         python-version: '3.11'
         
+    - name: Setup mdBook
+      uses: peaceiris/actions-mdbook@v2
+      with:
+        mdbook-version: '0.4.52'
+        
     - name: Install dependencies
       run: |
         cd software/documentation
@@ -61,12 +66,25 @@ jobs:
       with:
         mdbook-version: '0.4.52'
 
-    - name: Generate mdBook documentation
+    - name: Build documentation with new generation script
       run: |
-        echo "🚀 Starting automated mdBook build..."
-        cd software/scripts
-        python build_docs.py
-        echo "✅ mdBook documentation generated"
+        echo "🚀 Starting automated documentation build..."
+        chmod +x generate-docs.sh
+        ./generate-docs.sh
+        echo "✅ Automated build completed!"
+
+    - name: Verify build output
+      run: |
+        echo "📁 Verifying software/book/book/ directory contents..."
+        ls -la software/book/book/ || echo "❌ Build directory not found"
+        if [ -d "software/book/book" ]; then
+          echo "✅ Documentation ready for deployment!"
+          echo "📊 Generated files:"
+          find software/book/book -type f -name "*.html" | wc -l
+        else
+          echo "❌ Build failed - no output directory"
+          exit 1
+        fi
 
     - name: Prepare docs directory
       run: |

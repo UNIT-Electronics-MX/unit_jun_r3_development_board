@@ -52,17 +52,24 @@ jobs:
     - name: Setup Pages
       uses: actions/configure-pages@v5
 
-    - name: Build documentation with automation script
+    - name: Build documentation with new generation script
       run: |
-        echo "🚀 Starting automated documentation build..."
-        python3 software/scripts/build_docs.py
-        echo "✅ Automated build completed!"
+        echo "🚀 Starting automated mdBook documentation build..."
+        chmod +x generate-docs.sh
+        ./generate-docs.sh
+        echo "✅ mdBook build completed!"
 
     - name: Verify build output
       run: |
         echo "📁 Verifying software/book/book/ directory contents..."
-        ls -la software/book/book/
-        echo "✅ Documentation ready for GitHub Pages!"
+        if [ -d "software/book/book" ]; then
+          ls -la software/book/book/
+          echo "✅ Documentation ready for GitHub Pages!"
+          echo "📊 Generated HTML files: $(find software/book/book -name "*.html" | wc -l)"
+        else
+          echo "❌ Build failed - no output directory found"
+          exit 1
+        fi
 
     - name: Upload documentation to Pages
       uses: actions/upload-pages-artifact@v3
