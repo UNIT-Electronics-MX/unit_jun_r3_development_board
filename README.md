@@ -13,15 +13,15 @@ UNIT JUN R3 is a versatile and modular development board based on the ATmega328P
 
 ## 📦 Overview
 
+| Feature           | Description                                         |
+|-------------------|-----------------------------------------------------|
+| Microcontroller   | ATmega328P (8-bit AVR)                              |
+| Memory            | 32KB Flash, 2KB SRAM, 1KB EEPROM                    |
+| Clock Speed       | 16 MHz                                              |
+| Power Supply      | USB-C (5V) or external battery (3.3V)               |
+| Connectivity      | 2.4 GHz Wi-Fi, BLE 5.0, USB Device/Host support     |
+| Interfaces        | UART, I2C, SPI, PWM, ADC, GPIO                      |
 
-| Feature                 | Description                                                   |
-|------------------------|---------------------------------------------------------------|
-| **Microcontroller**     | ATmega328P (8-bit AVR)                              |
-| **Memory**              | 32KB Flash, 2KB SRAM, 1KB EEPROM                |
-| **Clock Speed**         | 16 MHz                                                       |
-| **Power Supply**        | USB-C (5V) or external battery (3.3V)                |
-| **Connectivity**        | 2.4 GHz Wi-Fi, BLE 5.0, USB Device/Host support |
-| **Interfaces**          | UART, I2C, SPI, PWM, ADC, GPIO            |
 
 
 ## 🧪 Use Cases
