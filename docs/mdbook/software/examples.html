@@ -178,15 +178,123 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="examples"><a class="header" href="#examples">Examples</a></h1>
+                        <h1 id="code-examples"><a class="header" href="#code-examples">Code Examples</a></h1>
+<blockquote>
+<p>📋 <strong>Auto-generated</strong>: 2025-09-23 16:14:11</p>
+</blockquote>
 <h2 id="available-examples"><a class="header" href="#available-examples">Available Examples</a></h2>
-<p>Check the <code>software/examples/</code> directory for:</p>
-<ul>
-<li><strong>MicroPython</strong>: <code>mp/sensor_touch.py</code></li>
-<li><strong>C/Arduino</strong>: <code>c/example/</code> directory</li>
-</ul>
-<h2 id="basic-usage-pattern"><a class="header" href="#basic-usage-pattern">Basic Usage Pattern</a></h2>
-<p>The touch sensor provides a simple digital output that can be read by any microcontroller.</p>
+<h3 id="-demo3_neo-demo3_neoino"><a class="header" href="#-demo3_neo-demo3_neoino">⚡ demo3_neo: demo3_neo.ino</a></h3>
+<pre><code class="language-cpp">#include &lt;Adafruit_NeoPixel.h&gt;
+
+#define PIN 8
+#define NUMPIXELS 25
+#define DELAYVAL 50
+
+Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
+
+void colorWipe(uint32_t color, int wait) {
+    for (int i = 0; i &lt; NUMPIXELS; i++) {
+        pixels.setPixelColor(i, color);
+        pixels.show();
+        delay(wait);
+    }
+}
+
+void theaterChase(uint32_t color, int wait) {
+    for (int a = 0; a &lt; 10; a++) {
+        for (int b = 0; b &lt; 3; b++) {
+            pixels.clear();
+            for (int i = b; i &lt; NUMPIXELS; i += 3) {
+                pixels.setPixelColor(i, color);
+            }
+            pixels.show();
+            delay(wait);
+</code></pre>
+<p><a href="software/examples/c/demo3_neo/demo3_neo.ino">📄 Ver código completo</a></p>
+<h3 id="-demo1_neo-demo1_neoino"><a class="header" href="#-demo1_neo-demo1_neoino">⚡ demo1_neo: demo1_neo.ino</a></h3>
+<pre><code class="language-cpp">#include &lt;Adafruit_NeoPixel.h&gt;
+
+#define PIN        8
+#define NUMPIXELS 25
+#define DELAYVAL   50
+
+Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
+
+void setup() {
+    pixels.begin();
+    pixels.setBrightness(64);
+    pixels.clear();
+    pixels.show();
+}
+
+void colorWipe(uint32_t color, int wait) {
+    for (int i = 0; i &lt; NUMPIXELS; i++) {
+        pixels.setPixelColor(i, color);
+        pixels.show();
+        delay(wait);
+    }
+}
+
+void theaterChase(uint32_t color, int wait) {
+    for (int a = 0; a &lt; 10; a++) {
+</code></pre>
+<p><a href="software/examples/c/demo1_neo/demo1_neo.ino">📄 Ver código completo</a></p>
+<h3 id="-demo_text-demo_textino"><a class="header" href="#-demo_text-demo_textino">⚡ demo_text: demo_text.ino</a></h3>
+<pre><code class="language-cpp">#include &lt;Adafruit_NeoPixel.h&gt;
+
+#define PIN        8
+#define NUM_LEDS   25
+#define MATRIX_WIDTH  5
+#define MATRIX_HEIGHT 5
+#define DELAYVAL   100
+
+Adafruit_NeoPixel strip(NUM_LEDS, PIN, NEO_GRB + NEO_KHZ800);
+
+// Función para convertir coordenadas x,y a índice LED
+int getPixelIndex(int x, int y) {
+  if (x &lt; 0 || x &gt;= MATRIX_WIDTH || y &lt; 0 || y &gt;= MATRIX_HEIGHT) {
+    return -1; // Fuera de los límites
+  }
+  
+  // Para matriz 5x5 con conexión lineal (cada fila consecutiva)
+  // Asumiendo que los LEDs van de izquierda a derecha en cada fila
+  return y * MATRIX_WIDTH + x;
+}
+
+// Definición de caracteres 3x5 optimizados para matriz 5x5
+const uint8_t font3x5[][3] = {
+  // 32: Espacio
+  {0x00, 0x00, 0x00},
+</code></pre>
+<p><a href="software/examples/c/demo_text/demo_text.ino">📄 Ver código completo</a></p>
+<h3 id="-demo2_oled-demo2_oledino"><a class="header" href="#-demo2_oled-demo2_oledino">⚡ demo2_oled: demo2_oled.ino</a></h3>
+<pre><code class="language-cpp">#include &lt;Wire.h&gt;
+#include &lt;Adafruit_GFX.h&gt;
+#include &lt;Adafruit_SSD1306.h&gt;
+#include &lt;Adafruit_NeoPixel.h&gt;
+
+#define SCREEN_WIDTH 128
+#define SCREEN_HEIGHT 64
+#define OLED_RESET   -1
+#define OLED_ADDRESS 0x3C
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &amp;Wire, OLED_RESET);
+bool oledOk = false;
+
+#define PIN        8
+#define NUMPIXELS 25
+Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
+
+const unsigned long ADC_INTERVAL   = 500;
+const unsigned long COLOR_INTERVAL = 1000;
+
+unsigned long lastADC   = 0;
+unsigned long lastColor = 0;
+
+int colorStage = 0;
+uint32_t colors[3];
+const char* colorNames[3] = {"Rojo", "Verde", "Azul"};
+</code></pre>
+<p><a href="software/examples/c/demo2_oled/demo2_oled.ino">📄 Ver código completo</a></p>
 
                     </main>
 
@@ -196,7 +304,7 @@
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../license.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../software/examples/micropython.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -210,7 +318,7 @@
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../license.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../software/examples/micropython.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
