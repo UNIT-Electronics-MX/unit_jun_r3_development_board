@@ -1,9 +1,9 @@
 ---
-title: "Template Development Board"
+title: "Touch Capacitive Sensor"
 version: "1.0"
 modified: "2025-04-30"
-output: "template_development_board"
-subtitle: "Generic development board template for documentation"
+output: "touch_capacitive_sensor"
+subtitle: "Easy-to-use breakout module based on the TTP223B capacitive touch IC"
 ---
 
 <!--
@@ -12,71 +12,73 @@ This file serves as an input to generate a datasheet-style technical PDF.
 Fill in each section without deleting or modifying the existing headings.
 -->
 
-# Template Development Board
+# Touch Capacitive Sensor
 
-![product](./images/top.png) <!-- FILL HERE: replace image if needed -->
+![alt text](../../hardware/resources/unit_top_V_0_0_1_ue0099_Sensor_Touch.png) <!-- FILL HERE: replace image if needed -->
 
-## Introduction
 
-<!-- FILL HERE -->
-Briefly describe the purpose, advantages, and general use of the development board.
+## KEY TECHNICAL SPECIFICATIONS
 
-## Functional Description
+<!-- 
+========================================
+EDITABLE SPECIFICATIONS TEMPLATE
+========================================
+Edita los valores a continuación según necesites.
+El formato se mantendrá automáticamente en el PDF generado.
+-->
 
-<!-- FILL HERE -->
-- Bullet points describing key functional features
+### 🔌 CONNECTIVITY (Conectividad)
+<!-- Edita las interfaces y conectores disponibles -->
+| Interface | Details |
+|-----------|---------|
+| **Primary Interface** | GPIO (Interrupt) |
+| **Connector Type** | JST 4-pin 1.0mm |
+| **Logic Levels** | VCC-referenced (2V – 5.5V tolerant) |
+
+
+
 
 ## Electrical Characteristics & Signal Overview
 
 <!-- FILL HERE -->
-- Operating voltage, current draw, logic levels, ADC resolution, touchpad sensitivity
+- **Wide supply range**: 2.0 V to 5.5 V, compatible with 3.3 V and 5 V systems.  
+- **Low power**: < 1 μA in standby mode.
 
 ## Applications
 
 <!-- FILL HERE -->
-- Suggested applications (e.g., IoT, automation, monitoring, etc.)
+- User interfaces for wearables and handheld devices
+
+- Touch-activated lamps, buzzers or relays
+
+- Capacitive keyboards and remote controls
+
+- Home automation touch panels
+
+- Interactive art installations
 
 ## Features
 
 <!-- FILL HERE -->
-- List of main technical features of the microcontroller and board design
+- **Touch-only sensing**: No physical press required – reacts to proximity of a finger.    
+- **Fast response**: < 80 ms touch detection time.  
+- **Auto-calibration**: Compensates for environmental changes and drift.  
+- **Selectable modes**: Momentary or toggle output (via solder-jumper on the board).  
+- **On-board pull-up/down**: Ensures clean digital output.  
+- **Mounting holes**: Two M3 screw holes for easy panel integration.  
+- **JST PH-2.0 connector**: Quick-disconnect cable interface.
 
-## Pin & Connector Layout
 
-| Group     | Available Pins | Suggested Use                          |
-|-----------|----------------|----------------------------------------|
-| GPIO      | <!-- FILL -->  | <!-- FILL -->                          |
-| UART      | <!-- FILL -->  | <!-- FILL -->                          |
-| TouchPad  | <!-- FILL -->  | <!-- FILL -->                          |
-| Analog    | <!-- FILL -->  | <!-- FILL -->                          |
-| SPI       | <!-- FILL -->  | <!-- FILL -->                          |
 
-## Settings
 
-### Interface Overview
-
-| Interface  | Signals / Pins         | Typical Use                              |
-|------------|------------------------|------------------------------------------|
-| UART       | <!-- FILL -->          | <!-- FILL -->                             |
-| I2C        | <!-- FILL -->          | <!-- FILL -->                             |
-| SPI        | <!-- FILL -->          | <!-- FILL -->                             |
-| USB        | <!-- FILL -->          | <!-- FILL -->                             |
-
-### Supports
-
-| Symbol | I/O         | Description                        |
-|--------|-------------|------------------------------------|
-| VCC    | Input       | <!-- FILL -->                      |
-| GND    | GND         | <!-- FILL -->                      |
-| IO     | Bidirectional | <!-- FILL -->                   |
 
 ## Block Diagram
 
-![Function Diagram](images/pinout.png) <!-- FILL HERE: replace image if needed -->
+![Function diagram](../../hardware/resources/unit_pinout_v_0_0_1_ue0099_sensor_touch_en.png) <!-- FILL HERE: replace image if needed -->
 
 ## Dimensions
 
-![Dimensions](images/dimension.png) <!-- FILL HERE: replace image if needed -->
+![Dimensions](../../hardware/resources/unit_dimension_V_0_0_1_ue0099_Sensor_Touch.png) <!-- FILL HERE: replace image if needed -->
 
 ## Usage
 
