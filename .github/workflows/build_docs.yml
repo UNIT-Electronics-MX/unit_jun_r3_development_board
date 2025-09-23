@@ -1,19 +1,19 @@
-name: 🚀 Build Professional Documentation
+name: 🚀 Build Documentation
 
 on:
   push:
     branches: [ main ]
     paths:
-      - 'software/documentation/**'
       - 'software/scripts/**'
+      - 'software/README.md'
       - 'hardware/**'
       - 'README.md'
       - '.github/workflows/build_docs.yml'
   pull_request:
     branches: [ main ]
     paths:
-      - 'software/documentation/**'
       - 'software/scripts/**'
+      - 'software/README.md'
       - 'hardware/**'
       - 'README.md'
 
@@ -35,83 +35,41 @@ jobs:
       uses: actions/setup-python@v5
       with:
         python-version: '3.11'
-        
-    - name: Install dependencies
-      run: |
-        cd software/documentation
-        pip install -r requirements.txt
-
-    - name: Install Chrome
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y wget gnupg
-        wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo gpg --dearmor -o /usr/share/keyrings/googlechrome-linux-keyring.gpg
-        echo "deb [arch=amd64 signed-by=/usr/share/keyrings/googlechrome-linux-keyring.gpg] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
-        sudo apt-get update
-        sudo apt-get install -y google-chrome-stable
-
-    - name: Generate professional documentation
-      run: |
-        cd software/documentation
-        python generate_professional_pdf.py
-        echo "✅ Professional documentation generated"
 
     - name: Setup mdBook
       uses: peaceiris/actions-mdbook@v2
       with:
         mdbook-version: '0.4.52'
 
-    - name: Generate mdBook documentation
+    - name: Generate documentation
       run: |
-        echo "🚀 Starting automated mdBook build..."
+        echo "🚀 Starting documentation build..."
         cd software/scripts
         python build_docs.py
-        echo "✅ mdBook documentation generated"
+        echo "✅ Documentation generated successfully"
 
-    - name: Prepare docs directory
+    - name: Deploy to docs directory
       run: |
         # Create docs directory if it doesn't exist
         mkdir -p docs
         
-        # Copy professional documentation from build/ to docs/
-        if [ -d "software/documentation/build" ]; then
-          echo "📁 Contents of build directory:"
-          ls -la software/documentation/build/
-          
-          # Copy all files from build directory
-          cp -v software/documentation/build/* docs/ 2>/dev/null || echo "Some files might not exist"
-          echo "✅ Professional documentation copied"
-          
-          # Copy images directory if it exists
-          if [ -d "software/documentation/build/images" ]; then
-            cp -r software/documentation/build/images docs/
-            echo "✅ Images directory copied"
-          fi
-          
-          # Copy image files (JPG, PNG, etc.)
-          if ls software/documentation/build/*.jpg >/dev/null 2>&1; then
-            cp -v software/documentation/build/*.jpg docs/
-            echo "✅ JPG files copied"
-          fi
-          if ls software/documentation/build/*.png >/dev/null 2>&1; then
-            cp -v software/documentation/build/*.png docs/
-            echo "✅ PNG files copied"
-          fi
-        fi
-        
         # Copy mdBook documentation
         if [ -d "software/book/book" ]; then
-          echo "📁 Contents of mdBook build:"
-          ls -la software/book/book/
+          echo "📁 Copying mdBook documentation..."
           
-          # Create mdbook subdirectory
+          # Clear existing docs and copy new content
+          rm -rf docs/mdbook
           mkdir -p docs/mdbook
           cp -r software/book/book/* docs/mdbook/
           echo "✅ mdBook documentation copied to docs/mdbook/"
+          
+          # Create simple index.html redirect to mdbook
+          echo '<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0; url=./mdbook/index.html"><title>Documentation</title></head><body><p>Redirecting... <a href="./mdbook/index.html">Click here if not redirected</a></p></body></html>' > docs/index.html
+          echo "✅ Index redirect created"
+        else
+          echo "❌ No mdBook build found at software/book/book"
+          exit 1
         fi
-        
-        # Create index.html with both documentations
-        echo '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>UNIT Touch Capacitive Sensor - Documentation</title><style>body { font-family: system-ui, sans-serif; max-width: 800px; margin: 2rem auto; padding: 2rem; } .doc-links { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0; } .doc-card { border: 2px solid #e1e5e9; border-radius: 8px; padding: 1.5rem; text-align: center; } .doc-card:hover { border-color: #0366d6; } .doc-card h3 { margin: 0 0 1rem 0; color: #24292e; } .doc-card p { color: #586069; margin-bottom: 1rem; } .doc-card a { text-decoration: none; color: #0366d6; font-weight: 500; }</style></head><body><h1>📱 UNIT Touch Capacitive Sensor</h1><p>Complete documentation for the UNIT Touch Capacitive Sensor project.</p><div class="doc-links"><div class="doc-card"><h3>📄 Professional Datasheet</h3><p>Complete technical specifications and professional documentation</p><a href="datasheet_professional.html">View Datasheet →</a></div><div class="doc-card"><h3>📚 Interactive Guide</h3><p>Interactive documentation with examples and tutorials</p><a href="mdbook/index.html">View Guide →</a></div></div><hr style="margin: 2rem 0;"><p style="text-align: center; color: #586069; font-size: 0.9em;">Generated automatically by GitHub Actions | <a href="https://github.com/UNIT-Electronics-MX/unit_touch_capacitive_sensor">Source Code</a></p></body></html>' > docs/index.html
         
         echo "📁 Final contents of docs directory:"
         ls -la docs/
