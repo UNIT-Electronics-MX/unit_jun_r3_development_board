@@ -400,6 +400,57 @@ def process_license() -> str:
 No license file found in the repository.
 """
 
+def create_resources_page() -> str:
+    """Create resources page with links to datasheet and documentation."""
+    
+    resources_content = """# Datasheet & Documentation
+
+## 📄 Professional Datasheet
+
+Complete technical specifications and professional documentation.
+
+📎 **[View Professional Datasheet](../datasheet_professional.html)** - Interactive HTML version
+
+📎 **[Download PDF Datasheet](resources/datasheet_professional.pdf)** - Downloadable PDF version
+
+## 🔗 Additional Resources
+
+### Hardware Resources
+- 🔌 [Schematic Diagram](resources/unit_sch_v_0_0_1_ue0081_Jun-R3.pdf) - Complete circuit schematic
+- 📐 [Board Dimensions](hardware/dimensions.md) - Physical specifications
+- 🔧 [Pinout Reference](hardware/pinout.md) - Pin configuration details
+
+### Software Resources
+- 💻 [Getting Started Guide](software/getting-started.md) - Setup and first steps  
+- 📝 [Code Examples](software/examples.md) - Arduino sketches and demos
+- 🛠️ [Development Setup](software/getting-started.md#development-environment) - IDE configuration
+
+### External Links
+"""
+
+    # Add GitHub link if available
+    github_url = get_github_repo_url()
+    if github_url:
+        resources_content += f"- 🔗 [Source Code Repository]({github_url}) - Complete project files\n"
+    
+    resources_content += """
+## 📋 Quick Reference
+
+| Resource Type | Description | Link |
+|---------------|-------------|------|
+| 📄 **Datasheet (HTML)** | Interactive technical specs | [View](../datasheet_professional.html) |
+| 📄 **Datasheet (PDF)** | Downloadable technical specs | [PDF](resources/datasheet_professional.pdf) |
+| 🔌 **Schematic** | Circuit diagram | [PDF](resources/unit_sch_v_0_0_1_ue0081_Jun-R3.pdf) |
+| 💻 **Examples** | Code samples | [View](software/examples.md) |
+| 🔧 **Setup Guide** | Getting started | [View](software/getting-started.md) |
+
+---
+
+*For the most up-to-date information, please refer to the official documentation and repository.*
+"""
+    
+    return resources_content
+
 def copy_resources():
     """Copy image resources and PDFs without duplication."""
     
@@ -490,6 +541,10 @@ def create_summary() -> str:
 - [Getting Started](./software/getting-started.md)
 - [Examples](./software/examples.md)
 
+# Resources
+
+- [Datasheet & Documentation](./resources.md)
+
 # Additional Information
 
 - [License](./license.md)
@@ -523,10 +578,14 @@ def main():
     print_status("Procesando licencia...", "📄")
     license_content = process_license()
     
+    print_status("Creando página de recursos...", "📋")
+    resources_content = create_resources_page()
+    
     # Prepare all files
     all_files = {
         "introduction.md": intro_content,
         "license.md": license_content,
+        "resources.md": resources_content,
         "SUMMARY.md": create_summary()
     }
     
