@@ -19,6 +19,8 @@
 
 <div align="center">
 
+### **Pinout Details**
+
 | Pin Label | Function / Notes                |
 | --------- | ------------------------------- |
 | D0        | RX – Serial Receive             |
