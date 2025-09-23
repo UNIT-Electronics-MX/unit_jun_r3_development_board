@@ -15,6 +15,26 @@ def print_status(message: str, emoji: str = "📝"):
     """Print a formatted status message."""
     print(f"{emoji} {message}")
 
+def read_file_content(file_path):
+    """Read content from a file with error handling."""
+    try:
+        with open(file_path, 'r', encoding='utf-8') as file:
+            return file.read()
+    except Exception as e:
+        print(f"Warning: Could not read {file_path}: {e}")
+        return ""
+
+def write_file_content(file_path, content):
+    """Write content to a file with proper directory creation."""
+    try:
+        os.makedirs(os.path.dirname(file_path), exist_ok=True)
+        with open(file_path, 'w', encoding='utf-8') as file:
+            file.write(content)
+        return True
+    except Exception as e:
+        print(f"Error writing to {file_path}: {e}")
+        return False
+
 def fix_image_sizes(content: str) -> str:
     """Fix image sizes for better display in mdBook, preserving HTML link structure."""
     
@@ -315,8 +335,6 @@ def process_license() -> str:
 
 No license file found in the repository.
 """
-    
-    return pages
 
 def copy_resources():
     """Copy image resources and PDFs without duplication."""
@@ -375,7 +393,9 @@ def copy_resources():
                         pass
     
     if pdf_copied > 0:
-        print_status(f"PDFs copiados: {pdf_copied} archivos", "�")
+        print_status(f"PDFs copiados: {pdf_copied} archivos", "📄")
+    
+    return copied + pdf_copied
 
 def create_summary() -> str:
     """Create SUMMARY.md based on actually generated content."""
@@ -455,16 +475,35 @@ def main():
         all_files[f"software/{filename}"] = content
     
     # Write all files
+    extraction_report = {
+        "files_created": [],
+        "files_failed": [],
+        "resources_copied": 0
+    }
+    
     for filename, content in all_files.items():
         file_path = src_path / filename
         file_path.parent.mkdir(parents=True, exist_ok=True)
-        file_path.write_text(content, encoding='utf-8')
+        try:
+            file_path.write_text(content, encoding='utf-8')
+            extraction_report["files_created"].append(filename)
+        except Exception as e:
+            print(f"Error writing {filename}: {e}")
+            extraction_report["files_failed"].append(filename)
     
     # Copy resources
-    copy_resources()
+    extraction_report["resources_copied"] = copy_resources()
     
-    print_status(f"Generados {len(all_files)} archivos SIN títulos duplicados", "✅")
+    # Write extraction report
+    report_path = book_path / "extraction_report.json"
+    with open(report_path, 'w') as f:
+        json.dump(extraction_report, f, indent=2)
+    
+    print_status(f"Generados {len(extraction_report['files_created'])} archivos SIN títulos duplicados", "✅")
     print_status("¡Contenido limpio y sin duplicaciones!", "🎉")
+    
+    return len(extraction_report['files_failed']) == 0
 
 if __name__ == "__main__":
-    main()
+    success = main()
+    exit(0 if success else 1)
