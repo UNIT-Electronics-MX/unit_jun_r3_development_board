@@ -15,7 +15,7 @@
 
 ## 🔌 Pinout
 
-<a href="img src="resources/Schematics_icon.jpg?raw=false" width="500px"><br/> Pinout</a>
+<a href="./resources/Pinout_icon.jpg?raw=false"><img src="./resources/Pinout_icon.jpg?raw=false" width="500px"><br/> Pinout</a>
 
 <div align="center">
 
