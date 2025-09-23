@@ -1,9 +1,9 @@
 ---
-title: "Touch Capacitive Sensor"
+title: "JUN R3 Development Board"
 version: "1.0"
 modified: "2025-04-30"
-output: "touch_capacitive_sensor"
-subtitle: "Easy-to-use breakout module based on the TTP223B capacitive touch IC"
+output: "JUN R3 Development Board"
+subtitle: "Development Board based on ATmega328P with NeoPixel Matrix"
 ---
 
 <!--
@@ -12,7 +12,7 @@ This file serves as an input to generate a datasheet-style technical PDF.
 Fill in each section without deleting or modifying the existing headings.
 -->
 
-# Touch Capacitive Sensor
+# JUN R3 Development Board
 
 ![alt text](../../hardware/resources/unit_top_V_0_0_1_ue0099_Sensor_Touch.png) <!-- FILL HERE: replace image if needed -->
 
@@ -26,6 +26,13 @@ EDITABLE SPECIFICATIONS TEMPLATE
 Edita los valores a continuación según necesites.
 El formato se mantendrá automáticamente en el PDF generado.
 -->
+- **Microcontroller:** ATmega328P (8-bit AVR)
+- **Clock Speed:** 16 MHz
+- **Flash Memory:** 32KB
+- QWIIC Connector
+- NeoPixel 5x5 Matrix
+- USB-C Power Input (5V)
+
 
 ### 🔌 CONNECTIVITY (Conectividad)
 <!-- Edita las interfaces y conectores disponibles -->
