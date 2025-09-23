@@ -11,6 +11,8 @@ software/sphinx/docs
 software/sphinx/pdf
 software/venv
 software/firmware
+software/book
+
 
 # mdBook build directories
 software/book/book/

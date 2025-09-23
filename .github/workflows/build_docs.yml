@@ -1,4 +1,4 @@
-name: 🚀 Build Professional Documentation
+name: Build Professional Documentation
 
 on:
   push:
@@ -59,7 +59,7 @@ jobs:
       run: |
         cd software/documentation
         python generate_professional_pdf.py
-        echo "✅ Professional documentation generated"
+        echo " Professional documentation generated"
 
     - name: Setup mdBook
       uses: peaceiris/actions-mdbook@v2
@@ -68,21 +68,21 @@ jobs:
 
     - name: Build documentation with new generation script
       run: |
-        echo "🚀 Starting automated documentation build..."
-        chmod +x generate-docs.sh
-        ./generate-docs.sh
-        echo "✅ Automated build completed!"
+        echo "Starting automated documentation build..."
+        chmod +x software/scripts/generate-docs.sh
+        ./software/scripts/generate-docs.sh
+        echo "Automated build completed!"
 
     - name: Verify build output
       run: |
-        echo "📁 Verifying software/book/book/ directory contents..."
-        ls -la software/book/book/ || echo "❌ Build directory not found"
+        echo "Verifying software/book/book/ directory contents..."
+        ls -la software/book/book/ || echo "Build directory not found"
         if [ -d "software/book/book" ]; then
-          echo "✅ Documentation ready for deployment!"
-          echo "📊 Generated files:"
+          echo "Documentation ready for deployment!"
+          echo "Generated files:"
           find software/book/book -type f -name "*.html" | wc -l
         else
-          echo "❌ Build failed - no output directory"
+          echo "Build failed - no output directory"
           exit 1
         fi
 
@@ -93,45 +93,45 @@ jobs:
         
         # Copy professional documentation from build/ to docs/
         if [ -d "software/documentation/build" ]; then
-          echo "📁 Contents of build directory:"
+          echo " Contents of build directory:"
           ls -la software/documentation/build/
           
           # Copy all files from build directory
           cp -v software/documentation/build/* docs/ 2>/dev/null || echo "Some files might not exist"
-          echo "✅ Professional documentation copied"
+          echo " Professional documentation copied"
           
           # Copy images directory if it exists
           if [ -d "software/documentation/build/images" ]; then
             cp -r software/documentation/build/images docs/
-            echo "✅ Images directory copied"
+            echo " Images directory copied"
           fi
           
           # Copy image files (JPG, PNG, etc.)
           if ls software/documentation/build/*.jpg >/dev/null 2>&1; then
             cp -v software/documentation/build/*.jpg docs/
-            echo "✅ JPG files copied"
+            echo " JPG files copied"
           fi
           if ls software/documentation/build/*.png >/dev/null 2>&1; then
             cp -v software/documentation/build/*.png docs/
-            echo "✅ PNG files copied"
+            echo " PNG files copied"
           fi
         fi
         
         # Copy mdBook documentation
         if [ -d "software/book/book" ]; then
-          echo "📁 Contents of mdBook build:"
+          echo " Contents of mdBook build:"
           ls -la software/book/book/
           
           # Create mdbook subdirectory
           mkdir -p docs/mdbook
           cp -r software/book/book/* docs/mdbook/
-          echo "✅ mdBook documentation copied to docs/mdbook/"
+          echo " mdBook documentation copied to docs/mdbook/"
         fi
         
         # Create index.html with both documentations
         echo '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>UNIT Touch Capacitive Sensor - Documentation</title><style>body { font-family: system-ui, sans-serif; max-width: 800px; margin: 2rem auto; padding: 2rem; } .doc-links { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0; } .doc-card { border: 2px solid #e1e5e9; border-radius: 8px; padding: 1.5rem; text-align: center; } .doc-card:hover { border-color: #0366d6; } .doc-card h3 { margin: 0 0 1rem 0; color: #24292e; } .doc-card p { color: #586069; margin-bottom: 1rem; } .doc-card a { text-decoration: none; color: #0366d6; font-weight: 500; }</style></head><body><h1>📱 UNIT Touch Capacitive Sensor</h1><p>Complete documentation for the UNIT Touch Capacitive Sensor project.</p><div class="doc-links"><div class="doc-card"><h3>📄 Professional Datasheet</h3><p>Complete technical specifications and professional documentation</p><a href="datasheet_professional.html">View Datasheet →</a></div><div class="doc-card"><h3>📚 Interactive Guide</h3><p>Interactive documentation with examples and tutorials</p><a href="mdbook/index.html">View Guide →</a></div></div><hr style="margin: 2rem 0;"><p style="text-align: center; color: #586069; font-size: 0.9em;">Generated automatically by GitHub Actions | <a href="https://github.com/UNIT-Electronics-MX/unit_touch_capacitive_sensor">Source Code</a></p></body></html>' > docs/index.html
         
-        echo "📁 Final contents of docs directory:"
+        echo " Final contents of docs directory:"
         ls -la docs/
         
         # GitHub Pages setup
