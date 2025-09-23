@@ -441,8 +441,8 @@ Complete technical specifications and professional documentation.
 
 ### Hardware Resources
 - 🔌 [Schematic Diagram](resources/unit_sch_v_0_0_1_ue0081_Jun-R3.pdf) - Complete circuit schematic
-- 📐 <a href="resources/board_dimensions.png" target="_blank">Board Dimensions</a> - Physical specifications
-- 🔧 <a href="resources/pinout_diagram.png" target="_blank">Pinout Reference</a> - Pin configuration details
+- 📐 [Board Dimensions](hardware/board-dimensions.md) - Physical specifications
+- 🔧 [Pinout Reference](hardware/pinout.md) - Pin configuration details
 
 ### Software Resources
 - 💻 [Getting Started Guide](software/getting-started.md) - Setup and first steps  
@@ -465,8 +465,8 @@ Complete technical specifications and professional documentation.
 | 📄 **Datasheet (HTML)** | Interactive technical specs | <a href="../datasheet_professional.html" target="_blank">View</a> |
 | 📄 **Datasheet (PDF)** | Downloadable technical specs | <a href="resources/datasheet_professional.pdf" target="_blank">PDF</a> |
 | 🔌 **Schematic** | Circuit diagram | <a href="resources/unit_sch_v_0_0_1_ue0081_Jun-R3.pdf" target="_blank">PDF</a> |
-| � **Dimensions** | Board measurements | <a href="resources/board_dimensions.png" target="_blank">Image</a> |
-| 🔧 **Pinout** | Pin configuration | <a href="resources/pinout_diagram.png" target="_blank">Image</a> |
+| � **Dimensions** | Board measurements | [View](hardware/board-dimensions.md) |
+| 🔧 **Pinout** | Pin configuration | [View](hardware/pinout.md) |
 | �💻 **Examples** | Code samples | [View](software/examples.md) |
 | 🔧 **Setup Guide** | Getting started | [View](software/getting-started.md) |
 
