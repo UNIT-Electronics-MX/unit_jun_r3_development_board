@@ -32,8 +32,9 @@ El formato se mantendrá automáticamente en el PDF generado.
 | Interface | Details |
 |-----------|---------|
 | **Primary Interface** | GPIO (Interrupt) |
-| **Connector Type** | JST 4-pin 1.0mm |
 | **Logic Levels** | VCC-referenced (2V – 5.5V tolerant) |
+| **Matrix 5x5** | GPIO-8 |
+
 
 
 
@@ -44,33 +45,20 @@ El formato se mantendrá automáticamente en el PDF generado.
 - **Wide supply range**: 2.0 V to 5.5 V, compatible with 3.3 V and 5 V systems.  
 - **Low power**: < 1 μA in standby mode.
 
-## Applications
+<!-- <!-- ## Applications
+
+
+
+## Features -->
 
 <!-- FILL HERE -->
-- User interfaces for wearables and handheld devices
-
-- Touch-activated lamps, buzzers or relays
-
-- Capacitive keyboards and remote controls
-
-- Home automation touch panels
-
-- Interactive art installations
-
 ## Features
 
-<!-- FILL HERE -->
-- **Touch-only sensing**: No physical press required – reacts to proximity of a finger.    
-- **Fast response**: < 80 ms touch detection time.  
-- **Auto-calibration**: Compensates for environmental changes and drift.  
-- **Selectable modes**: Momentary or toggle output (via solder-jumper on the board).  
-- **On-board pull-up/down**: Ensures clean digital output.  
-- **Mounting holes**: Two M3 screw holes for easy panel integration.  
-- **JST PH-2.0 connector**: Quick-disconnect cable interface.
-
-
-
-
+- ATMEGA328P microcontroller (8-bit AVR)
+- 32KB Flash, 2KB SRAM, 1KB EEPROM
+- 16 MHz clock speed
+- USB-C (5V) or external battery (3.3V) power supply
+- UART, I2C, SPI, PWM, ADC, GPIO interfaces
 
 ## Block Diagram
 

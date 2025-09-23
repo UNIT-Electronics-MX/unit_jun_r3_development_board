@@ -15,6 +15,8 @@
 
 ## 🔌 Pinout
 
+<a href="img src="resources/Schematics_icon.jpg?raw=false" width="500px"><br/> Pinout</a>
+
 <div align="center">
 
 | Pin Label | Function        | Notes                             |
