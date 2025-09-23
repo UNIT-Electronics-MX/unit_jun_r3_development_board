@@ -64,8 +64,32 @@ jobs:
     - name: Generate mdBook documentation
       run: |
         echo "🚀 Starting automated mdBook build..."
+        echo "📁 Current directory: $(pwd)"
+        echo "📁 Project structure:"
+        find . -name "*.ino" -type f
+        echo "📁 Software examples directory:"
+        ls -la software/examples/ || echo "examples directory not found"
+        if [ -d "software/examples/c" ]; then
+          echo "📁 C examples found:"
+          ls -la software/examples/c/
+        fi
+        
         cd software/scripts
-        python build_docs.py
+        echo "📁 Scripts directory contents:"
+        ls -la
+        
+        chmod +x generate-docs.sh
+        echo "🔧 Running generate-docs.sh..."
+        ./generate-docs.sh
+        
+        echo "📁 Checking generated examples:"
+        if [ -f "../book/src/software/examples.md" ]; then
+          echo "✅ Examples file generated"
+          head -50 ../book/src/software/examples.md
+        else
+          echo "❌ Examples file NOT generated"
+        fi
+        
         echo "✅ mdBook documentation generated"
 
     - name: Prepare docs directory
