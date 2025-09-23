@@ -11,12 +11,14 @@ software/sphinx/docs
 software/sphinx/pdf
 software/venv
 software/firmware
-software/book
 
-
-# mdBook build directories
+# mdBook build directories (generated HTML files)
 software/book/book/
 software/book/build/
+
+# Keep source files but ignore generated content
+!software/book/src/
+!software/book/book.toml
 
 # Temporary documentation files
 *.tmp
