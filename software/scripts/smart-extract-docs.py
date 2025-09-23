@@ -278,25 +278,31 @@ def process_software_content() -> Dict[str, str]:
 """
     
     # Process C/Arduino examples
-    c_example_dir = Path.cwd() / "software" / "examples" / "c" / "example"
+    c_example_dir = Path.cwd() / "software" / "examples" / "c"
     if c_example_dir.exists():
         examples_content += "## C/Arduino Examples\n\n"
         
-        # Look for .c, .cpp, .ino files
-        for code_file in c_example_dir.rglob("*"):
-            if code_file.suffix in ['.c', '.cpp', '.ino', '.h']:
-                try:
-                    code_content = code_file.read_text(encoding='utf-8', errors='ignore')
-                    file_type = "C" if code_file.suffix == '.c' else "C++" if code_file.suffix in ['.cpp', '.ino'] else "Header"
-                    
-                    examples_content += f"""### {code_file.name} ({file_type})
-
-```{code_file.suffix[1:]}
-{code_content}```
+        # Look for .ino files in subdirectories
+        for example_dir in c_example_dir.iterdir():
+            if example_dir.is_dir():
+                for code_file in example_dir.rglob("*.ino"):
+                    try:
+                        code_content = code_file.read_text(encoding='utf-8', errors='ignore')
+                        
+                        # Extract first 20 lines as preview
+                        lines = code_content.split('\n')
+                        preview_lines = lines[:20]
+                        preview = '\n'.join(preview_lines)
+                        
+                        examples_content += f"""### ⚡ {example_dir.name}: {code_file.name}
+```cpp
+{preview}
+```
+[📄 Ver código completo](software/examples/c/{example_dir.name}/{code_file.name})
 
 """
-                except:
-                    continue
+                    except Exception as e:
+                        continue
     
     # Add examples overview if no specific examples found
     if examples_content == "# Examples\n\n":
