@@ -22,7 +22,7 @@ UNIT JUN R3 is a versatile and modular development board based on the ATmega328P
 
 ## 🧪 Use Cases
 
-- IoT Sensor Nodes
+
 - Wearable Devices
 - Environmental Monitoring
 - Educational Electronics
@@ -35,15 +35,13 @@ UNIT JUN R3 is a versatile and modular development board based on the ATmega328P
 2. **Install** the appropriate board package for:
    - Arduino IDE
    - PlatformIO
-   - ESP-IDF / Pico SDK
 3. **Flash** a sample project or use one from `/software/examples`
 4. **Power** via USB or external battery (if supported)
 
 
 ## 📚 Resources
 
-- [Schematic Diagram](hardware/schematic.pdf)
-- [Board Dimensions (DXF)](docs/dimensions.dxf)
+- [Schematic Diagram](hardware/unit_sch_v_0_0_1_ue0081_Jun-R3.pdf)
 - [Pinout Diagram](docs/pinout.png)
 - [Firmware Examples](firmware/)
 - [Getting Started Guide](docs/getting_started.md)
