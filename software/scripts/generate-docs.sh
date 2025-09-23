@@ -88,7 +88,6 @@ generate_hardware_docs() {
 
 > 📋 **Auto-generated**: $(date '+%Y-%m-%d %H:%M:%S')
 
-The UNIT Touch Capacitive Sensor hardware documentation.
 
 ## Available Resources
 

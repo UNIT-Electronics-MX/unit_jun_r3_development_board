@@ -192,7 +192,7 @@ def process_main_readme() -> str:
     extracted = re.sub(r'src="\.\./resources/', 'src="./resources/', extracted)
     extracted = re.sub(r'href="\.\./resources/', 'href="./resources/', extracted)
     
-    return f"# Touch Capacitive Sensor\n\n{extracted}"
+    return f"# JUN R3 Development Board\n\n{extracted}"
 
 def process_hardware_readme() -> Dict[str, str]:
     """Process hardware README extracting sections without title duplication."""

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Automated Documentation Builder for UNIT Touch Capacitive Sensor
+Automated Documentation Builder for UNIT JUN R3 Development Board
 This script automates the complete mdBook documentation generation and deployment process.
 """
 
@@ -22,7 +22,7 @@ class DocumentationBuilder:
         self.extract_script = Path(__file__).parent / "smart-extract-docs.py"  # Now in same directory
         self.docs_path = self.project_root / "docs"  # PROTECTED DIRECTORY
         
-        print(f"🏗️  Documentation Builder for UNIT Touch Capacitive Sensor")
+        print(f"🏗️  Documentation Builder for UNIT JUN R3 Development Board")
         print(f"📁 Project root: {self.project_root}")
         print(f"📚 Book path: {self.book_path}")
         print(f"🚨 Protected docs/ path: {self.docs_path} (NEVER MODIFIED)")
@@ -247,7 +247,7 @@ def main():
     """Main entry point with command line argument handling."""
     import argparse
     
-    parser = argparse.ArgumentParser(description="Build UNIT Touch Capacitive Sensor Documentation")
+    parser = argparse.ArgumentParser(description="Build UNIT JUN R3 Development Board Documentation")
     parser.add_argument("--serve", "-s", action="store_true", help="Serve documentation locally after building")
     parser.add_argument("--port", "-p", type=int, default=3000, help="Port for local server (default: 3000)")
     parser.add_argument("--clean-only", "-c", action="store_true", help="Only clean build artifacts")
