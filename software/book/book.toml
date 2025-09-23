@@ -1,0 +1,17 @@
+[book]
+title = "UNIT Jun R3 Development Board"
+authors = ["UNIT Electronics MX"]
+description = "Complete documentation for UNIT Jun R3 Development Board"
+
+[build]
+build-dir = "book"
+
+[output.html]
+default-theme = "light"
+preferred-dark-theme = "navy"
+copy-fonts = true
+mathjax-support = false
+git-repository-url = "https://github.com/UNIT-Electronics-MX/unit_jun_r3_development_board"
+
+[output.html.search]
+enable = true
