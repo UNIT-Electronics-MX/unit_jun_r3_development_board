@@ -11,6 +11,14 @@ import shutil
 from pathlib import Path
 from typing import Dict, List, Optional, Any
 
+def clean_emoji_from_title(text: str) -> str:
+    """Remove emoji characters from text for clean URLs."""
+    # Remove emoji characters
+    cleaned = re.sub(r'[\U0001F300-\U0001F9FF]', '', text)
+    # Remove extra whitespace
+    cleaned = re.sub(r'\s+', ' ', cleaned).strip()
+    return cleaned if cleaned else text
+
 def get_github_repo_url():
     """Try to detect GitHub repository URL from git remote."""
     try:
@@ -244,6 +252,8 @@ No hardware README.md found. Please create hardware/README.md with your hardware
     
     for i, match in enumerate(section_matches):
         section_title = match.group(1).strip()
+        # Clean the title for key generation (remove emojis for clean URLs)
+        clean_title = clean_emoji_from_title(section_title)
         section_start = match.end()
         
         # Find the end of this section (start of next section or end of content)
@@ -253,7 +263,7 @@ No hardware README.md found. Please create hardware/README.md with your hardware
             section_end = len(content)
         
         section_content = content[section_start:section_end].strip()
-        sections[section_title.lower().replace(' ', '_').replace('-', '_')] = section_content
+        sections[clean_title.lower().replace(' ', '_').replace('-', '_')] = section_content
     
     # Create pages from sections found in README
     for section_key, section_content in sections.items():
@@ -533,8 +543,10 @@ def create_summary() -> str:
         
         for match in section_matches:
             section_title = match.group(1).strip()
-            clean_section_name = section_title.lower().replace(' ', '-').replace('_', '-')
-            summary += f"\n- [{section_title}](./hardware/{clean_section_name}.md)"
+            # Use clean title for both display and filename
+            clean_title = clean_emoji_from_title(section_title)
+            clean_section_name = clean_title.lower().replace(' ', '-').replace('_', '-')
+            summary += f"\n- [{clean_title}](./hardware/{clean_section_name}.md)"
     
     summary += """
 
