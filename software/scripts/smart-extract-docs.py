@@ -11,6 +11,24 @@ import shutil
 from pathlib import Path
 from typing import Dict, List, Optional, Any
 
+def get_github_repo_url():
+    """Try to detect GitHub repository URL from git remote."""
+    try:
+        import subprocess
+        result = subprocess.run(['git', 'remote', 'get-url', 'origin'], 
+                              capture_output=True, text=True, cwd=Path.cwd())
+        if result.returncode == 0:
+            url = result.stdout.strip()
+            # Convert SSH to HTTPS format
+            if url.startswith('git@github.com:'):
+                url = url.replace('git@github.com:', 'https://github.com/')
+            if url.endswith('.git'):
+                url = url[:-4]
+            return url
+    except:
+        pass
+    return None
+
 def print_status(message: str, emoji: str = "📝"):
     """Print a formatted status message."""
     print(f"{emoji} {message}")
@@ -283,6 +301,8 @@ The following examples demonstrate various features of this development board.
     
     # Process C/Arduino examples
     c_example_dir = Path.cwd() / "software" / "examples" / "c"
+    github_url = get_github_repo_url()
+    
     if c_example_dir.exists():
         
         # Look for .ino files in subdirectories
@@ -297,11 +317,20 @@ The following examples demonstrate various features of this development board.
                         preview_lines = lines[:20]
                         preview = '\n'.join(preview_lines)
                         
+                        # Generate GitHub link if repository URL is available
+                        code_link = ""
+                        if github_url:
+                            # Create GitHub blob URL for the file
+                            relative_path = f"software/examples/c/{example_dir.name}/{code_file.name}"
+                            code_link = f"[📄 Ver código completo en GitHub]({github_url}/blob/main/{relative_path})"
+                        else:
+                            code_link = f"[📄 Código completo: {code_file.name}](#{example_dir.name.lower()})"
+                        
                         examples_content += f"""### ⚡ {example_dir.name}: {code_file.name}
 ```cpp
 {preview}
 ```
-[📄 Ver código completo](examples/c/{example_dir.name}/{code_file.name})
+{code_link}
 
 """
                     except Exception as e:
