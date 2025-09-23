@@ -176,14 +176,60 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="getting-started"><a class="header" href="#getting-started">Getting Started</a></h1>
-<h2 id="quick-setup"><a class="header" href="#quick-setup">Quick Setup</a></h2>
-<h3 id="1-hardware-connections"><a class="header" href="#1-hardware-connections">1. Hardware Connections</a></h3>
+<h2 id="quick-start-guide"><a class="header" href="#quick-start-guide">Quick Start Guide</a></h2>
+<h3 id="1-hardware-setup"><a class="header" href="#1-hardware-setup">1. Hardware Setup</a></h3>
+<ol>
+<li><strong>Connect to Computer</strong>: Use the USB-C cable to connect your UNIT JUN R3 to your computer</li>
+<li><strong>Install Drivers</strong>: Most operating systems will automatically recognize the board</li>
+<li><strong>Verify Connection</strong>: Check that the power LED is on</li>
+</ol>
+<h3 id="2-development-environment"><a class="header" href="#2-development-environment">2. Development Environment</a></h3>
+<h4 id="arduino-ide"><a class="header" href="#arduino-ide">Arduino IDE</a></h4>
+<ol>
+<li>Install <a href="https://www.arduino.cc/en/software">Arduino IDE</a></li>
+<li>Add the ATmega328P board support if needed</li>
+<li>Select <strong>Arduino Uno</strong> as the board type</li>
+<li>Install required libraries:
 <ul>
-<li><strong>VCC</strong> → 3.3V or 5V supply</li>
-<li><strong>GND</strong> → Ground</li>
-<li><strong>OUT</strong> → Digital input pin on your microcontroller</li>
+<li>Adafruit NeoPixel Library</li>
 </ul>
-<p>Compatible with a JST 1 mm pitch QWIIC connector for easy I2C integration (power only, D0 must be connected separately).</p>
+</li>
+</ol>
+<h4 id="platformio"><a class="header" href="#platformio">Platform.io</a></h4>
+<pre><code class="language-ini">[env:uno]
+platform = atmelavr
+board = uno
+framework = arduino
+lib_deps = 
+    adafruit/Adafruit NeoPixel@^1.10.5
+</code></pre>
+<h3 id="3-first-program"><a class="header" href="#3-first-program">3. First Program</a></h3>
+<p>Try the basic NeoPixel example to verify everything works:</p>
+<pre><code class="language-cpp">#include &lt;Adafruit_NeoPixel.h&gt;
+
+#define PIN        8
+#define NUMPIXELS 25
+
+Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
+
+void setup() {
+  pixels.begin();
+  pixels.setBrightness(50);
+}
+
+void loop() {
+  pixels.clear();
+  pixels.setPixelColor(0, pixels.Color(255, 0, 0)); // Red
+  pixels.show();
+  delay(1000);
+}
+</code></pre>
+<h3 id="4-next-steps"><a class="header" href="#4-next-steps">4. Next Steps</a></h3>
+<ul>
+<li>Explore the <a href="./examples.html">Examples</a> section</li>
+<li>Check out QWIIC sensor integration</li>
+<li>Try different NeoPixel patterns</li>
+</ul>
 
                     </main>
 
