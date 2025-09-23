@@ -409,9 +409,9 @@ def create_resources_page() -> str:
 
 Complete technical specifications and professional documentation.
 
-📎 **[View Professional Datasheet](../datasheet_professional.html)** - Interactive HTML version
+📎 **<a href="../datasheet_professional.html" target="_blank">View Professional Datasheet</a>** - Interactive HTML version
 
-📎 **[Download PDF Datasheet](resources/datasheet_professional.pdf)** - Downloadable PDF version
+📎 **<a href="resources/datasheet_professional.pdf" target="_blank">Download PDF Datasheet</a>** - Downloadable PDF version
 
 ## 🔗 Additional Resources
 
@@ -431,16 +431,16 @@ Complete technical specifications and professional documentation.
     # Add GitHub link if available
     github_url = get_github_repo_url()
     if github_url:
-        resources_content += f"- 🔗 [Source Code Repository]({github_url}) - Complete project files\n"
+        resources_content += f"- 🔗 <a href=\"{github_url}\" target=\"_blank\">Source Code Repository</a> - Complete project files\n"
     
     resources_content += """
 ## 📋 Quick Reference
 
 | Resource Type | Description | Link |
 |---------------|-------------|------|
-| 📄 **Datasheet (HTML)** | Interactive technical specs | [View](../datasheet_professional.html) |
-| 📄 **Datasheet (PDF)** | Downloadable technical specs | [PDF](resources/datasheet_professional.pdf) |
-| 🔌 **Schematic** | Circuit diagram | [PDF](resources/unit_sch_v_0_0_1_ue0081_Jun-R3.pdf) |
+| 📄 **Datasheet (HTML)** | Interactive technical specs | <a href="../datasheet_professional.html" target="_blank">View</a> |
+| 📄 **Datasheet (PDF)** | Downloadable technical specs | <a href="resources/datasheet_professional.pdf" target="_blank">PDF</a> |
+| 🔌 **Schematic** | Circuit diagram | <a href="resources/unit_sch_v_0_0_1_ue0081_Jun-R3.pdf" target="_blank">PDF</a> |
 | 💻 **Examples** | Code samples | [View](software/examples.md) |
 | 🔧 **Setup Guide** | Getting started | [View](software/getting-started.md) |
 
