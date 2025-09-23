@@ -1,7 +1,7 @@
 # Hardware
 
 
-<a href="./unit_sch_v_0_0_1_ue0081_Jun-R3.pdf"><img src="resources/Schematics_icon.jpg?raw=false" width="500px"><br/> Schematics</a>
+<a href="./unit_sch_v_0_0_1_ue0081_Jun-R3.pdf"><img src="resources/schematics_icon.jpg?raw=false" width="500px"><br/> Schematics</a>
 
 ---
 
@@ -51,12 +51,12 @@
 
 ## 📏 Board Dimensions
 <div align="center">
-<a href="./resources/unit_dimension_v_0_0_1_ue0081_Jun R3.png"><img src="./resources/unit_dimension_v_0_0_1_ue0081_Jun R3.png" width="500px"><br/>Dimensions</a>
+<a href="./resources/unit_dimension_v_0_0_1_ue0081_jun_r3.png"><img src="./resources/unit_dimension_v_0_0_1_ue0081_jun_r3.png" width="500px"><br/>Dimensions</a>
 </div>
 
 ## 📃 Board Topology
 <div align="center">
-<a href="./resources/unit_topology_v_0_0_1_ue0081_Jun R3.png"><img src="./resources/unit_topology_v_0_0_1_ue0081_Jun R3.png" width="500px"><br/>Topology</a>
+<a href="./resources/unit_topology_v_0_0_1_ue0081_jun_r3.png"><img src="./resources/unit_topology_v_0_0_1_ue0081_jun_r3.png" width="500px"><br/>Topology</a>
 
 | Ref.  | Description                                                                 |
 |-------|-----------------------------------------------------------------------------|

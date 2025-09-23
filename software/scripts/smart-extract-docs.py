@@ -19,6 +19,10 @@ def clean_emoji_from_title(text: str) -> str:
     cleaned = re.sub(r'\s+', ' ', cleaned).strip()
     return cleaned if cleaned else text
 
+def encode_url_spaces(url: str) -> str:
+    """Encode spaces in URLs for better web compatibility."""
+    return url.replace(' ', '%20')
+
 def get_github_repo_url():
     """Try to detect GitHub repository URL from git remote."""
     try:
@@ -114,23 +118,33 @@ def fix_image_sizes(content: str) -> str:
 def preserve_external_links(content: str) -> str:
     """Preserve HTML and PDF links as-is, fix local resource paths."""
     
-    # Fix local image src references to use resources folder
+    # Fix local image src references to use resources folder with URL encoding
+    def fix_src_resources(match):
+        filename = match.group(1)
+        encoded_filename = encode_url_spaces(filename)
+        return f'src="../resources/{encoded_filename}"'
+    
     content = re.sub(
         r'src="\./resources/([^"]+)"',
-        r'src="../resources/\1"',
+        fix_src_resources,
         content
     )
     
     content = re.sub(
         r'src="resources/([^"]+)"',
-        r'src="../resources/\1"',
+        lambda m: f'src="../resources/{encode_url_spaces(m.group(1))}"',
         content
     )
     
-    # Fix href links to local resources
+    # Fix href links to local resources with URL encoding
+    def fix_href_resources(match):
+        filename = match.group(1)
+        encoded_filename = encode_url_spaces(filename)
+        return f'href="../resources/{encoded_filename}"'
+    
     content = re.sub(
         r'href="\./resources/([^"]+)"',
-        r'href="../resources/\1"',
+        fix_href_resources,
         content
     )
     
