@@ -1,8 +1,7 @@
 # Hardware Overview
 
-> 📋 **Auto-generated**: 2025-09-23 09:30:46
+> 📋 **Auto-generated**: 2025-09-23 09:39:28
 
-The UNIT Touch Capacitive Sensor hardware documentation.
 
 ## Available Resources
 
