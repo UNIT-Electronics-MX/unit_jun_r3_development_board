@@ -32,7 +32,7 @@ El formato se mantendrá automáticamente en el PDF generado.
 | Interface | Details |
 |-----------|---------|
 | **Primary Interface** | GPIO (Interrupt) |
-| **Logic Levels** | VCC-referenced (2V – 5.5V tolerant) |
+| **Logic Levels** | VCC (2V – 5.5V tolerant) |
 | **Matrix 5x5** | GPIO-8 |
 
 
