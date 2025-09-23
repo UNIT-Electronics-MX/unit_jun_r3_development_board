@@ -61,11 +61,14 @@ El formato se mantendrá automáticamente en el PDF generado.
 <!-- FILL HERE -->
 ## Features
 
-- ATMEGA328P microcontroller (8-bit AVR)
-- 32KB Flash, 2KB SRAM, 1KB EEPROM
-- 16 MHz clock speed
-- USB-C (5V) or external battery (3.3V) power supply
-- UART, I2C, SPI, PWM, ADC, GPIO interfaces
+- **ATMEGA328P** microcontroller (8-bit AVR)
+- **NeoPixel 5x5 Matrix** for visual feedback
+- **QWIIC Connector** for I2C peripherals
+- **USB-C Power Input** (5V)
+- **Breadboard Friendly**: Standard 0.1" pin spacing
+- **Compact Size**: 40mm x 40mm
+- **Wide Supply Range**: 2.0 V to 5.5 V,
+
 
 ## Block Diagram
 
