@@ -41,6 +41,18 @@ def get_github_repo_url():
         pass
     return None
 
+def get_github_pages_url():
+    """Generate GitHub Pages URL from repository URL."""
+    repo_url = get_github_repo_url()
+    if repo_url and 'github.com' in repo_url:
+        # Extract owner and repo from https://github.com/owner/repo
+        parts = repo_url.split('/')
+        if len(parts) >= 5:
+            owner = parts[-2]
+            repo = parts[-1]
+            return f"https://{owner}.github.io/{repo}"
+    return None
+
 def print_status(message: str, emoji: str = "📝"):
     """Print a formatted status message."""
     print(f"{emoji} {message}")
@@ -574,15 +586,18 @@ def create_resources_page() -> str:
 
 """
     
+    # Get dynamic GitHub Pages URL
+    pages_url = get_github_pages_url()
+    
     resources_content = f"""# Datasheet & Documentation
 
 ## 📄 Professional Datasheet
 
 Complete technical specifications and professional documentation.
 
-📎 **<a href="../datasheet_professional.html" target="_blank">View Professional Datasheet</a>** - Interactive HTML version
+📎 **<a href="{pages_url}/datasheet_professional.html" target="_blank">View Professional Datasheet</a>** - Interactive HTML version
 
-📎 **<a href="../datasheet_professional.pdf" target="_blank">Download PDF Datasheet</a>** - Downloadable PDF version
+📎 **<a href="{pages_url}/datasheet_professional.pdf" target="_blank">Download PDF Datasheet</a>** - Downloadable PDF version
 
 ## 🔗 Additional Resources
 
@@ -611,8 +626,8 @@ Complete technical specifications and professional documentation.
 
 | Resource Type | Description | Link |
 |---------------|-------------|------|
-| 📄 **Datasheet (HTML)** | Interactive technical specs | <a href="../datasheet_professional.html" target="_blank">View</a> |
-| 📄 **Datasheet (PDF)** | Downloadable technical specs | <a href="../datasheet_professional.pdf" target="_blank">PDF</a> |
+| 📄 **Datasheet (HTML)** | Interactive technical specs | <a href="{pages_url}/datasheet_professional.html" target="_blank">View</a> |
+| 📄 **Datasheet (PDF)** | Downloadable technical specs | <a href="{pages_url}/datasheet_professional.pdf" target="_blank">PDF</a> |
 {schematic_row}| 📐 **Dimensions** | Board measurements | [View](hardware/dimensions.md) |
 | 🔧 **Pinout** | Pin configuration | [View](hardware/pinout.md) |
 | 💻 **Examples** | Code samples | [View](software/examples.md) |
