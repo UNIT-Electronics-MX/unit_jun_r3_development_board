@@ -51,6 +51,7 @@ UNIT JUN R3 is a versatile and modular development board based on the ATmega328P
 - [Firmware Examples](firmware/)
 - [Getting Started Guide](docs/getting_started.md)
 
+📚 **[View Complete Documentation](https://unit-electronics-mx.github.io/unit_jun_r3_development_board/)** | 📄 **[Professional Datasheet](https://unit-electronics-mx.github.io/unit_jun_r3_development_board/datasheet_professional.html)**
 
 
 ## 📝 License
