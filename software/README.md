@@ -54,6 +54,6 @@ void loop() {
 
 ### 4. Next Steps
 
-- Explore the [Examples](./examples.md) section
+- Explore the [Examples](./examples/) section
 - Check out QWIIC sensor integration
 - Try different NeoPixel patterns
