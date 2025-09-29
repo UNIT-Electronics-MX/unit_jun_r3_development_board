@@ -36,8 +36,12 @@ UNIT JUN R3 is a versatile and modular development board based on the ATmega328P
 | Memory            | 32KB Flash, 2KB SRAM, 1KB EEPROM                    |
 | Clock Speed       | 16 MHz                                              |
 | Power Supply      | USB-C (5V)            |
-| Connectivity      | 2.4 GHz Wi-Fi, BLE 5.0, USB Device/Host support     |
 | Interfaces        | UART, I2C, SPI, PWM, ADC, GPIO                      |
+| NeoPixel Matrix   | 5x5 RGB LED Matrix (WS2812B)                        |
+| Connectivity      | USB-C for programming and power                     |
+| Form Factor       | UNO-compatible (68.6mm x 53.4mm)                      |
+| Development IDEs  | Arduino IDE, PlatformIO                             |
+| Onboard Features  | Built-in NeoPixel matrix, user LED, reset button    |
 
 
 
