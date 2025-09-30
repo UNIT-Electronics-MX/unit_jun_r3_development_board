@@ -1,7 +1,7 @@
 # Hardware
 
 <div align="center">
-    <a href="./unit_sch_v_0_0_1_ue0081_Jun-R3.pdf"><img src="./resources/img/schematics_icon.jpg?raw=false" width="500px"><br/>Schematics</a>
+    <a href="./unit_sch_v_0_0_1_ue0081_Jun-R3.pdf"><img src="./resources/schematics_icon.jpg" width="500px"><br/>Schematics</a>
     <br/>
 </div>
 
