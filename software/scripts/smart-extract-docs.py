@@ -13,8 +13,10 @@ from typing import Dict, List, Optional, Any
 
 def clean_emoji_from_title(text: str) -> str:
     """Remove emoji characters from text for clean URLs."""
-    # Remove emoji characters
-    cleaned = re.sub(r'[\U0001F300-\U0001F9FF]', '', text)
+    # Remove emoji characters (broader range to include ⚙️ and other symbols)
+    cleaned = re.sub(r'[\U0001F000-\U0001F9FF]', '', text)  # Extended range
+    cleaned = re.sub(r'[\u2600-\u26FF]', '', cleaned)      # Additional symbol range  
+    cleaned = re.sub(r'[\u2700-\u27BF]', '', cleaned)      # Dingbats range (includes ⚙️)
     # Remove extra whitespace
     cleaned = re.sub(r'\s+', ' ', cleaned).strip()
     return cleaned if cleaned else text
@@ -80,27 +82,60 @@ def write_file_content(file_path, content):
 def fix_image_sizes(content: str) -> str:
     """Fix image sizes for better display in mdBook, preserving HTML link structure."""
     
-    # First, handle HTML link structures with images - these should be preserved as-is but with better styling
-    # Pattern: <a href="..."><img src="..." width="..." ...><br/> Text</a>
+    # Use placeholder approach to avoid regex lookbehind issues
+    temp_placeholder = "___TEMP_PROCESSED___"
+    processed_items = []
+    
+    def store_processed(match):
+        processed_items.append(match.group(0))
+        return f"{temp_placeholder}{len(processed_items)-1}___"
+    
+    # First, handle HTML link structures with images that are already inside div center - just fix sizing
+    # Pattern: <div align="center"><a href="..."><img src="..." width="..." ...><br/> Text</a></div>
     content = re.sub(
-        r'<a href="([^"]+)"><img src="([^"]+)"[^>]*><br/>\s*([^<]*)</a>',
-        r'<div align="center"><a href="\1"><img src="\2" style="max-width: 500px; height: auto;" alt="\3"><br/> \3</a></div>',
+        r'<div align="center">\s*<a href="([^"]+)"><img src="([^"]+)"[^>]*><br/>\s*([^<]*)</a>\s*</div>',
+        lambda m: store_processed(re.match(r'.*', f'<div align="center"><a href="{m.group(1)}"><img src="{m.group(2)}" style="max-width: 500px; height: auto;" alt="{m.group(3)}"><br/> {m.group(3)}</a></div>')),
         content
     )
     
-    # Handle standalone img tags with width attribute (not part of links)
-    # We'll temporarily mark linked images to avoid processing them
-    temp_placeholder = "___LINKED_IMG___"
+    # Handle standalone link+image structures (not already processed)
+    # Pattern: <a href="..."><img src="..." width="..." ...><br/> Text</a>
+    def process_standalone_link_img(match):
+        full_match = match.group(0)
+        # Check if this is part of an already processed item
+        for item in processed_items:
+            if full_match in item:
+                return full_match  # Don't process if already handled
+        
+        href = match.group(1)
+        src = match.group(2)
+        text = match.group(3)
+        return f'<div align="center"><a href="{href}"><img src="{src}" style="max-width: 500px; height: auto;" alt="{text}"><br/> {text}</a></div>'
     
-    # Temporarily replace linked images
+    content = re.sub(
+        r'<a href="([^"]+)"><img src="([^"]+)"[^>]*><br/>\s*([^<]*)</a>',
+        process_standalone_link_img,
+        content
+    )
+    
+    # Handle standalone img tags with width attribute (not part of links or already centered)
+    # We'll temporarily mark linked images to avoid processing them
+    temp_placeholder_linked = "___LINKED_IMG___"
+    
+    # Temporarily replace linked images that we haven't already processed
     linked_images = []
     def store_linked_img(match):
-        linked_images.append(match.group(0))
-        return f"{temp_placeholder}{len(linked_images)-1}___"
+        full_match = match.group(0)
+        # Don't store if already processed
+        for item in processed_items:
+            if full_match in item:
+                return full_match
+        linked_images.append(full_match)
+        return f"{temp_placeholder_linked}{len(linked_images)-1}___"
     
     content = re.sub(r'<a[^>]*>.*?<img[^>]*>.*?</a>', store_linked_img, content, flags=re.DOTALL)
     
-    # Now process standalone images
+    # Now process standalone images that aren't already handled
     content = re.sub(
         r'<img src="([^"]+)" width="[^"]*"([^>]*)>',
         r'<img src="\1" style="max-width: 80%; height: auto;"\2>',
@@ -123,7 +158,11 @@ def fix_image_sizes(content: str) -> str:
     
     # Restore linked images
     for i, linked_img in enumerate(linked_images):
-        content = content.replace(f"{temp_placeholder}{i}___", linked_img)
+        content = content.replace(f"{temp_placeholder_linked}{i}___", linked_img)
+    
+    # Restore processed items
+    for i, processed_item in enumerate(processed_items):
+        content = content.replace(f"{temp_placeholder}{i}___", processed_item)
     
     return content
 
@@ -581,8 +620,7 @@ def create_resources_page() -> str:
     else:
         hardware_resources_section += "- 🔌 Schematic Diagram - Not found (looking for unit_sch_*.pdf)\n"
     
-    hardware_resources_section += """- 📐 [Board Dimensions](hardware/dimensions.md) - Physical specifications
-- 🔧 [Pinout Reference](hardware/pinout.md) - Pin configuration details
+    hardware_resources_section += """-  [Pinout Reference](hardware/pinout.md) - Pin configuration details
 
 """
     
