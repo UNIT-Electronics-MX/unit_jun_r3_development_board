@@ -243,7 +243,7 @@ Please refer to <a href="LICENSE.html"><code>LICENSE.md</code></a> for full term
 <hr />
 <h2 id="-pinout"><a class="header" href="#-pinout">🔌 Pinout</a></h2>
 <div align="center">
-    <div align="center"><a href="hardware/../resources/unit_pinout_v_0_0_1_ue0081_unit_jun_r3_en.pdf"><img src="hardware/../resources/pinout/unit_pinout_v_0_0_1_ue0081_unit_jun_r3_en.jpg" style="max-width: 500px; height: auto;" alt="Pinout"><br/> Pinout</a></div>
+    <div align="center"><a href="hardware/../resources/unit_pinout_v_0_0_1_ue0081_unit_jun_r3_en.jpg"><img src="hardware/../resources/pinout/unit_pinout_v_0_0_1_ue0081_unit_jun_r3_en.jpg" style="max-width: 500px; height: auto;" alt="Pinout"><br/> Pinout</a></div>
     <br/><br/>
 </div>
 <div align="center">
@@ -274,9 +274,7 @@ Please refer to <a href="LICENSE.html"><code>LICENSE.md</code></a> for full term
 </tbody></table>
 </div></div>
 <h2 id="-board-dimensions"><a class="header" href="#-board-dimensions">📏 Board Dimensions</a></h2>
-<div align="center">
-    <div align="center"><a href="hardware/../resources/unit_dimension_v_0_0_1_ue0081_jun_r3.png"><img src="hardware/../resources/unit_dimension_v_0_0_1_ue0081_jun_r3.png" style="max-width: 500px; height: auto;" alt="Dimensions"><br/> Dimensions</a></div>
-</div>
+<div align="center"><a href="hardware/../resources/unit_dimension_v_0_0_1_ue0081_jun_r3.png"><img src="hardware/../resources/unit_dimension_v_0_0_1_ue0081_jun_r3.png" style="max-width: 500px; height: auto;" alt="Dimensions"><br/> Dimensions</a></div>
 <h2 id="-board-topology"><a class="header" href="#-board-topology">📃 Board Topology</a></h2>
 <div align="center">
     <div align="center"><a href="hardware/../resources/unit_topology_v_0_0_1_ue0081_jun_r3.png"><img src="hardware/../resources/unit_topology_v_0_0_1_ue0081_jun_r3.png" style="max-width: 500px; height: auto;" alt="Topology"><br/> Topology</a></div>
@@ -302,7 +300,7 @@ Please refer to <a href="LICENSE.html"><code>LICENSE.md</code></a> for full term
 </tbody></table>
 </div></div><div style="break-before: page; page-break-before: always;"></div><h1 id="pinout"><a class="header" href="#pinout">Pinout</a></h1>
 <div align="center">
-    <div align="center"><a href="hardware/../resources/unit_pinout_v_0_0_1_ue0081_unit_jun_r3_en.pdf"><img src="hardware/../resources/pinout/unit_pinout_v_0_0_1_ue0081_unit_jun_r3_en.jpg" style="max-width: 500px; height: auto;" alt="Pinout"><br/> Pinout</a></div>
+    <div align="center"><a href="hardware/../resources/unit_pinout_v_0_0_1_ue0081_unit_jun_r3_en.jpg"><img src="hardware/../resources/pinout/unit_pinout_v_0_0_1_ue0081_unit_jun_r3_en.jpg" style="max-width: 500px; height: auto;" alt="Pinout"><br/> Pinout</a></div>
     <br/><br/>
 </div>
 <div align="center">
@@ -332,9 +330,7 @@ Please refer to <a href="LICENSE.html"><code>LICENSE.md</code></a> for full term
 <tr><td>GND</td><td>Ground – Common reference</td></tr>
 </tbody></table>
 </div></div><div style="break-before: page; page-break-before: always;"></div><h1 id="board-dimensions"><a class="header" href="#board-dimensions">Board Dimensions</a></h1>
-<div align="center">
-    <div align="center"><a href="hardware/../resources/unit_dimension_v_0_0_1_ue0081_jun_r3.png"><img src="hardware/../resources/unit_dimension_v_0_0_1_ue0081_jun_r3.png" style="max-width: 500px; height: auto;" alt="Dimensions"><br/> Dimensions</a></div>
-</div><div style="break-before: page; page-break-before: always;"></div><h1 id="board-topology"><a class="header" href="#board-topology">Board Topology</a></h1>
+<div align="center"><a href="hardware/../resources/unit_dimension_v_0_0_1_ue0081_jun_r3.png"><img src="hardware/../resources/unit_dimension_v_0_0_1_ue0081_jun_r3.png" style="max-width: 500px; height: auto;" alt="Dimensions"><br/> Dimensions</a></div><div style="break-before: page; page-break-before: always;"></div><h1 id="board-topology"><a class="header" href="#board-topology">Board Topology</a></h1>
 <div align="center">
     <div align="center"><a href="hardware/../resources/unit_topology_v_0_0_1_ue0081_jun_r3.png"><img src="hardware/../resources/unit_topology_v_0_0_1_ue0081_jun_r3.png" style="max-width: 500px; height: auto;" alt="Topology"><br/> Topology</a></div>
 <div class="table-wrapper"><table><thead><tr><th>Ref.</th><th>Description</th></tr></thead><tbody>
@@ -377,14 +373,6 @@ Please refer to <a href="LICENSE.html"><code>LICENSE.md</code></a> for full term
 </ul>
 </li>
 </ol>
-<h4 id="platformio"><a class="header" href="#platformio">Platform.io</a></h4>
-<pre><code class="language-ini">[env:uno]
-platform = atmelavr
-board = uno
-framework = arduino
-lib_deps = 
-    adafruit/Adafruit NeoPixel@^1.10.5
-</code></pre>
 <h3 id="3-first-program"><a class="header" href="#3-first-program">3. First Program</a></h3>
 <p>Try the basic NeoPixel example to verify everything works:</p>
 <pre><code class="language-cpp">#include &lt;Adafruit_NeoPixel.h&gt;
@@ -516,8 +504,7 @@ unsigned long lastADC   = 0;
 <h3 id="hardware-resources"><a class="header" href="#hardware-resources">Hardware Resources</a></h3>
 <ul>
 <li>🔌 <a href="resources/unit_sch_v_0_0_1_ue0081_Jun-R3.pdf">Schematic Diagram</a> - Complete circuit schematic</li>
-<li>📐 <a href="hardware/dimensions.html">Board Dimensions</a> - Physical specifications</li>
-<li>🔧 <a href="hardware/pinout.html">Pinout Reference</a> - Pin configuration details</li>
+<li><a href="hardware/pinout.html">Pinout Reference</a> - Pin configuration details</li>
 </ul>
 <h3 id="software-resources"><a class="header" href="#software-resources">Software Resources</a></h3>
 <ul>
