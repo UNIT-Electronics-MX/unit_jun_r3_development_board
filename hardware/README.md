@@ -10,10 +10,11 @@
 ## 🔌 Pinout
 
 <div align="center">
-    <a href="./resources/unit_pinout_v_0_0_1_ue0081_unit_jun_r3_en.jpg"><img src="./resources/pinout/unit_pinout_v_0_0_1_ue0081_unit_jun_r3_en.jpg" width="500px"><br/>Pinout</a>
+    <a href="./resources/unit_pinout_v_0_0_1_ue0081_unit_jun_r3_en.jpg"><img src="./resources/unit_pinout_v_0_0_1_ue0081_unit_jun_r3_en.png" width="500px"><br/>Pinout</a>
     <br/><br/>
 
 </div>
+
 
 <div align="center">
 
