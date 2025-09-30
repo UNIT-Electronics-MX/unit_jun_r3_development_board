@@ -17,16 +17,6 @@
 4. Install required libraries:
    - Adafruit NeoPixel Library
 
-#### Platform.io
-```ini
-[env:uno]
-platform = atmelavr
-board = uno
-framework = arduino
-lib_deps = 
-    adafruit/Adafruit NeoPixel@^1.10.5
-```
-
 ### 3. First Program
 
 Try the basic NeoPixel example to verify everything works:
