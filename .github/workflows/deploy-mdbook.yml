@@ -1,4 +1,4 @@
-name: 📚 Deploy mdBook Documentation
+name:  Deploy mdBook Documentation
 
 on:
   push:
@@ -55,15 +55,15 @@ jobs:
 
     - name: Build documentation with automation script
       run: |
-        echo "🚀 Starting automated documentation build..."
+        echo " Starting automated documentation build..."
         python3 software/scripts/build_docs.py
-        echo "✅ Automated build completed!"
+        echo " Automated build completed!"
 
     - name: Verify build output
       run: |
-        echo "📁 Verifying software/book/book/ directory contents..."
+        echo " Verifying software/book/book/ directory contents..."
         ls -la software/book/book/
-        echo "✅ Documentation build verified!"
+        echo " Documentation build verified!"
 
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4

@@ -27,8 +27,9 @@ UNIT JUN R3 is a versatile and modular development board based on the ATmega328P
 
 
 
+<div align="center" >
 
-## 📦 Overview
+## Overview
 
 | Feature           | Description                                         |
 |-------------------|-----------------------------------------------------|
@@ -43,29 +44,17 @@ UNIT JUN R3 is a versatile and modular development board based on the ATmega328P
 | Development IDEs  | Arduino IDE, PlatformIO                             |
 | Onboard Features  | Built-in NeoPixel matrix, user LED, reset button    |
 
+</div>
+
+## 
+
+- **Prototyping:** Quickly develop and test embedded system ideas.
+- **Education:** Perfect for learning microcontroller basics and electronics.
+- **Wearables:** Small size and versatile power make it suitable for wearable devices.
+- **Interactive Displays:** Use the built-in NeoPixel matrix for engaging visual output.
 
 
-## 🧪 Use Cases
-
-- Prototyping: Rapidly build and evaluate embedded system concepts.
-- Education: Ideal for teaching microcontroller fundamentals and electronics.
-- Wearables: Compact form factor and flexible power options for wearable tech.
-- Interactive Displays: Leverage the integrated NeoPixel matrix for dynamic visual feedback.
-
-
-
-
-## 🚀 Getting Started
-
-1. **Connect** the board via USB-C to your computer.
-2. **Install** the appropriate board package for:
-   - Arduino IDE
-   - PlatformIO
-3. **Flash** a sample project or use one from `/software/examples`
-4. **Power** via USB or external battery (if supported)
-
-
-## 📚 Resources
+## Resources
 
 - [Schematic Diagram](hardware/unit_sch_v_0_0_1_ue0081_Jun-R3.pdf)
 - [Pinout Diagram](hardware/resources/pinout/unit_pinout_v_0_0_1_ue0081_unit_jun_r3_en.jpg)
@@ -73,7 +62,7 @@ UNIT JUN R3 is a versatile and modular development board based on the ATmega328P
 - [Getting Started Guide](docs/getting_started.md)
 
 
-## 📝 License
+## License
 
 All hardware and documentation in this project are licensed under the **MIT License**.  
 Please refer to [`LICENSE.md`](LICENSE.md) for full terms.
