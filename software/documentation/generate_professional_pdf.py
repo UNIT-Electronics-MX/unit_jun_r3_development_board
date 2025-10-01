@@ -30,14 +30,14 @@ class RepositoryExplorer:
         while current != os.path.dirname(current):
             # Verificar si hay .git (repositorio git)
             if os.path.exists(os.path.join(current, '.git')):
-                print(f"📁 Raíz del repositorio encontrada (.git): {current}")
+                print(f" Raíz del repositorio encontrada (.git): {current}")
                 return current
             
             # Verificar si hay un README.md Y directorios típicos de proyecto
             if (os.path.exists(os.path.join(current, 'README.md')) and 
                 os.path.exists(os.path.join(current, 'hardware')) and
                 os.path.exists(os.path.join(current, 'software'))):
-                print(f"📁 Raíz del repositorio encontrada (estructura): {current}")
+                print(f" Raíz del repositorio encontrada (estructura): {current}")
                 return current
             
             current = os.path.dirname(current)
@@ -46,10 +46,10 @@ class RepositoryExplorer:
         # (desde software/documentation -> ../../)
         fallback = os.path.abspath(os.path.join(self.base_path, '..', '..'))
         if os.path.exists(os.path.join(fallback, 'README.md')):
-            print(f"📁 Usando raíz fallback: {fallback}")
+            print(f" Usando raíz fallback: {fallback}")
             return fallback
         
-        print(f"⚠️ No se encontró raíz del repositorio, usando: {os.path.abspath(self.base_path)}")
+        print(f" No se encontró raíz del repositorio, usando: {os.path.abspath(self.base_path)}")
         return os.path.abspath(self.base_path)
     
     def scan_repository_structure(self):
@@ -182,7 +182,7 @@ class RepositoryExplorer:
                             all_sections[section_key] = section_data
                             print(f"  ✅ Replaced {section_key} with higher priority version")
                         else:
-                            print(f"  ⚠️ Kept existing {section_key} (higher priority)")
+                            print(f"   Kept existing {section_key} (higher priority)")
                             
             except Exception as e:
                 print(f"❌ Error reading {readme_info['path']}: {e}")
@@ -307,7 +307,7 @@ class ProfessionalDatasheetGenerator:
                         metadata['description'] = desc[:200] + '...' if len(desc) > 200 else desc
                         
             except Exception as e:
-                print(f"⚠️ Error leyendo README principal: {e}")
+                print(f" Error leyendo README principal: {e}")
         
         return metadata
         
@@ -342,11 +342,11 @@ class ProfessionalDatasheetGenerator:
         for path in possible_paths:
             abs_path = os.path.abspath(os.path.join(self.base_path, path))
             if os.path.exists(abs_path):
-                print(f"📁 Hardware directory found: {abs_path}")
+                print(f" Hardware directory found: {abs_path}")
                 return path
         
         # Si no encuentra ninguna, usar la ruta estándar
-        print(f"⚠️ Hardware directory not found, using default: ../../hardware/resources")
+        print(f" Hardware directory not found, using default: ../../hardware/resources")
         return "../../hardware/resources"
         
     def get_professional_css(self):
@@ -2560,7 +2560,7 @@ class ProfessionalDatasheetGenerator:
                 print(f"📖 Found hardware README: {hardware_readme_path}")
                 return self.parse_readme(hardware_readme_path)
         
-        print("⚠️ Hardware README not found in any expected location")
+        print(" Hardware README not found in any expected location")
         return None
 
     def combine_readme_content(self, main_data, hardware_data):
@@ -3213,7 +3213,7 @@ class ProfessionalDatasheetGenerator:
                             paragraphs.append(final_text)
                         
         except Exception as e:
-            print(f"⚠️ Error al leer README: {e}")
+            print(f" Error al leer README: {e}")
         
         # Fallback si no se encontró contenido
         if not paragraphs:
@@ -3507,12 +3507,12 @@ class ProfessionalDatasheetGenerator:
         try:
             # Verificar que el archivo existe antes de intentar abrirlo
             if not os.path.exists(image_path):
-                print(f"⚠️ Image file does not exist: {image_path}")
+                print(f" Image file does not exist: {image_path}")
                 return None
                 
             # Verificar permisos de lectura
             if not os.access(image_path, os.R_OK):
-                print(f"⚠️ No read permission for: {image_path}")
+                print(f" No read permission for: {image_path}")
                 return None
                 
             with open(image_path, 'rb') as image_file:
@@ -3520,7 +3520,7 @@ class ProfessionalDatasheetGenerator:
                 
                 # Verificar que el archivo no está vacío
                 if len(file_data) == 0:
-                    print(f"⚠️ Image file is empty: {image_path}")
+                    print(f" Image file is empty: {image_path}")
                     return None
                     
                 encoded_string = base64.b64encode(file_data).decode('utf-8')
@@ -3540,7 +3540,7 @@ class ProfessionalDatasheetGenerator:
                 return base64_data
                 
         except Exception as e:
-            print(f"⚠️ Error converting {image_path} to base64: {e}")
+            print(f" Error converting {image_path} to base64: {e}")
             import traceback
             traceback.print_exc()
             return None
@@ -3572,9 +3572,9 @@ class ProfessionalDatasheetGenerator:
                     else:
                         # Fallback a ruta relativa si falla base64
                         embedded_images[image_key] = image_file
-                        print(f"⚠️ 🔄 Using relative path for {image_file} (base64 failed)")
+                        print(f" 🔄 Using relative path for {image_file} (base64 failed)")
                 else:
-                    print(f"⚠️ ❌ Image not found: {source_path}")
+                    print(f" ❌ Image not found: {source_path}")
                     # Intentar con ruta relativa como último recurso
                     embedded_images[image_key] = image_file
         
@@ -3743,7 +3743,7 @@ class ProfessionalDatasheetGenerator:
                     doc_content = f.read()
                 print(f"📖 Loaded documentation README: {len(doc_content)} chars")
             except Exception as e:
-                print(f"⚠️ Error reading documentation README: {e}")
+                print(f" Error reading documentation README: {e}")
                 doc_content = content  # Fallback to combined content
         
         # Crear HTML completo
@@ -5067,19 +5067,19 @@ class ProfessionalDatasheetGenerator:
                     print(f"✅ PDF generado exitosamente usando {tool['name']}")
                     return True
                 else:
-                    print(f"⚠️ {tool['name']} falló: {result.stderr}")
+                    print(f" {tool['name']} falló: {result.stderr}")
                     
             except FileNotFoundError:
-                print(f"⚠️ {tool['name']} no encontrado")
+                print(f" {tool['name']} no encontrado")
                 continue
             except subprocess.TimeoutExpired:
-                print(f"⚠️ {tool['name']} timeout")
+                print(f" {tool['name']} timeout")
                 continue
             except Exception as e:
-                print(f"⚠️ Error con {tool['name']}: {e}")
+                print(f" Error con {tool['name']}: {e}")
                 continue
         
-        print("⚠️ No se pudo generar PDF. HTML disponible en:", html_path)
+        print(" No se pudo generar PDF. HTML disponible en:", html_path)
         return False
 
 def main():
@@ -5091,7 +5091,7 @@ def main():
     repo_root = os.path.abspath(os.path.join(current_dir, '..', '..'))
     
     print(f"🔍 Iniciando generador con descubrimiento automático")
-    print(f"📁 Directorio del repositorio: {repo_root}")
+    print(f" Directorio del repositorio: {repo_root}")
     
     # Crear generador
     generator = ProfessionalDatasheetGenerator(current_dir)
@@ -5102,15 +5102,15 @@ def main():
     
     try:
         result = generator.generate_professional_datasheet(readme_path, output_path)
-        print(f"\n✅ Generación completada exitosamente!")
-        print(f"📄 PDF: {result['pdf_path']}")
-        print(f"🌐 HTML: {result['html_path']}")
-        print(f"🏷️  Código del producto: {result['product_code']}")
-        print(f"📅 Fecha: {result['date']}")
-        print(f"📚 Fuentes descubiertas: {', '.join(result['discovered_sources'])}")
-        
+        print(f"\n Generación completada exitosamente!")
+        print(f" PDF: {result['pdf_path']}")
+        print(f" HTML: {result['html_path']}")
+        print(f" Código del producto: {result['product_code']}")
+        print(f" Fecha: {result['date']}")
+        print(f" Fuentes descubiertas: {', '.join(result['discovered_sources'])}")
+
     except Exception as e:
-        print(f"❌ Error durante la generación: {e}")
+        print(f" Error durante la generación: {e}")
         import traceback
         traceback.print_exc()
 
