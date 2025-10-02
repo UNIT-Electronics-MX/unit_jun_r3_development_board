@@ -759,7 +759,7 @@ def copy_resources():
         book_path / "src" / "hardware" / "resources"
     ]
     
-    pdf_sources = [docs_dir]
+    pdf_sources = [docs_dir, hardware_dir]  # Add hardware_dir as PDF source
     
     for source_dir in pdf_sources:
         if source_dir.exists():
