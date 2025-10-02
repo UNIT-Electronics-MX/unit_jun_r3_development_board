@@ -1,5 +1,5 @@
 
-# UNIT JUN R3 Development Board 
+# JUN R3 Development Board 
 
 
 ## Introduction

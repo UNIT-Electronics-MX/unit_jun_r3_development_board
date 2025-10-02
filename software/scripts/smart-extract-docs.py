@@ -553,7 +553,7 @@ No license file found in the repository.
 """
 
 def create_resources_page() -> str:
-    """Create resources page with links to datasheet and documentation."""
+    """Create resources page with hardware documentation and product PDF."""
     
     # Detect schematic PDF dynamically
     project_root = Path.cwd()
@@ -575,23 +575,7 @@ def create_resources_page() -> str:
         if schematic_link:
             break
     
-    # Build hardware resources section
-    hardware_resources_section = "### Hardware Resources\n"
-    
-    if schematic_link and schematic_filename:
-        hardware_resources_section += f"- [Schematic Diagram]({schematic_link}) - Complete circuit schematic\n"
-    else:
-        hardware_resources_section += "- Schematic Diagram - Not found (looking for unit_sch_*.pdf)\n"
-    
-    hardware_resources_section += """- [Pinout Reference](hardware/pinout.md) - Pin configuration details
-
-"""
-    
-    # Get dynamic GitHub Pages URL
-    pages_url = get_github_pages_url()
-    
     # Find product PDF in hardware directory
-    project_root = Path.cwd()
     hardware_dir = project_root / "hardware"
     product_pdf = None
     
@@ -600,7 +584,7 @@ def create_resources_page() -> str:
         product_pdf = pdf_file
         break
     
-    resources_content = f"""# Hardware Documentation & Resources
+    resources_content = """# Hardware Documentation & Resources
 
 ## Product Datasheet
 
@@ -620,10 +604,58 @@ Product datasheet not found in hardware directory.
 
 """
     
-    resources_content += f"""
+    resources_content += """
 ## Hardware Resources
+"""
+    
+    if schematic_link and schematic_filename:
+        resources_content += f"- [Schematic Diagram]({schematic_link}) - Complete circuit schematic\n"
+    else:
+        resources_content += "- Schematic Diagram - Not found (looking for unit_sch_*.pdf)\n"
+    
+    resources_content += """- [Pinout Reference](hardware/pinout.md) - Pin configuration details
 
-{hardware_resources_section}
+"""
+    
+    # Find product PDF in hardware directory
+    hardware_dir = project_root / "hardware"
+    product_pdf = None
+    
+    # Look for unit_product_*.pdf
+    for pdf_file in hardware_dir.glob("unit_product_*.pdf"):
+        product_pdf = pdf_file
+        break
+    
+    resources_content = """# Hardware Documentation & Resources
+
+## Product Datasheet
+
+Official product documentation with complete technical specifications.
+"""
+    
+    # Add product PDF if found
+    if product_pdf:
+        product_filename = product_pdf.name
+        resources_content += f"""
+**[Download Product Datasheet](hardware/{product_filename})** - Official PDF documentation
+
+"""
+    else:
+        resources_content += """
+Product datasheet not found in hardware directory.
+
+"""
+    
+    resources_content += """
+## Hardware Resources
+"""
+    
+    if schematic_link and schematic_filename:
+        resources_content += f"- [Schematic Diagram]({schematic_link}) - Complete circuit schematic\n"
+    else:
+        resources_content += "- Schematic Diagram - Not found (looking for unit_sch_*.pdf)\n"
+    
+    resources_content += """- [Pinout Reference](hardware/pinout.md) - Pin configuration details
 
 ## Software Resources
 - [Getting Started Guide](software/getting-started.md) - Setup and first steps  
@@ -638,7 +670,7 @@ Product datasheet not found in hardware directory.
     if github_url:
         resources_content += f"- [Source Code Repository]({github_url}) - Complete project files\n"
     
-    resources_content += f"""
+    resources_content += """
 ## Quick Reference
 
 | Resource | Description | Link |
@@ -658,7 +690,7 @@ Product datasheet not found in hardware directory.
         resources_content += f"""
 | **Schematic** | Circuit diagram | Not found |"""
     
-    resources_content += f"""
+    resources_content += """
 | **Pinout** | Pin configuration | [View](hardware/pinout.md) |
 | **Examples** | Code samples | [View](software/examples.md) |
 | **Setup Guide** | Getting started | [View](software/getting-started.md) |

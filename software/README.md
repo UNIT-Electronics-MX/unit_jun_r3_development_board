@@ -47,3 +47,9 @@ void loop() {
 - Explore the [Examples](./examples/) section
 - Check out QWIIC sensor integration
 - Try different NeoPixel patterns
+
+# Demo2 OLED - NeoPixel and OLED Display
+
+Combines OLED display functionality with NeoPixel LEDs to show sensor readings and create interactive visual feedback.
+
+
