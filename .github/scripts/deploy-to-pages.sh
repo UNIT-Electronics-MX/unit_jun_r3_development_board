@@ -4,8 +4,9 @@
 
 echo "🚀 Building documentation for GitHub Actions..."
 
-# Load configuration first
-source "$(dirname "$0")/config.sh"
+# Load configuration with robust path handling
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "${SCRIPT_DIR}/config.sh"
 
 # Build documentation (does NOT modify docs/ directory)
 echo "📖 Building documentation..."
@@ -25,11 +26,11 @@ fi
 echo "📊 Files in ${BUILD_DIR}/ directory:"
 ls -la "${BUILD_DIR}/"
 
-# Load navbar injection functions
-source "$(dirname "$0")/navbar-inject.sh"
+# Load navbar builder functions
+source "$(dirname "$0")/navbar-builder.sh"
 
-# Inject navbar using configurable parameters
-inject_navbar_into_files "${BUILD_DIR}"
+# Build navbar using configurable parameters
+build_navbar_into_files "${BUILD_DIR}"
 
 echo "✅ Documentation built successfully!"
 

@@ -59,11 +59,7 @@ UNIT JUN R3 is a versatile and modular development board based on the ATmega328P
 - [Getting Started Guide](https://unit-electronics-mx.github.io/unit_jun_r3_development_board/software/getting-started.html)
 
 
-## License
-t-electronics-mx.github.io/unit_jun_r3_development_board/)** | 📄 **[Professional Datasheet](https://unit-electronics-mx.github.io/unit_jun_r3_development_board/datasheet_professional.html)**
-
-
-## 📝 UNITnse
+## 📝 License
 
 All hardware and documentation in this project are licensed under the **MIT License**.  
 Please refer to [`LICENSE.md`](LICENSE.md) for full terms.
@@ -71,5 +67,6 @@ Please refer to [`LICENSE.md`](LICENSE.md) for full terms.
 
 
 <div align="center">
-  <sub>Template created by UNIT Electronics</sub>
+  <sub>Template created by UNIT Electronics • Adapt this file to document your board!</sub>
 </div>
+

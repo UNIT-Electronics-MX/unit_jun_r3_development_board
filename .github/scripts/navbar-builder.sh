@@ -1,9 +1,10 @@
 #!/bin/bash
-# Navbar injection functions
-# This file contains reusable functions for injecting navbar elements
+# Navbar builder functions
+# This file contains reusable functions for building navbar elements
 
-# Load configuration
-source "$(dirname "$0")/config.sh"
+# Load configuration with robust path handling
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "${SCRIPT_DIR}/config.sh"
 
 # Function to generate navbar JavaScript injection
 generate_navbar_js() {
@@ -43,11 +44,11 @@ document.addEventListener("DOMContentLoaded", function() {
 EOF
 }
 
-# Function to inject navbar into HTML files
-inject_navbar_into_files() {
+# Function to build navbar into HTML files
+build_navbar_into_files() {
     local build_dir="$1"
     
-    echo "🔗 Injecting configurable navbar links..."
+    echo "🔗 Building configurable navbar links..."
     
     # Generate the JavaScript code
     local navbar_js=$(generate_navbar_js)
@@ -67,5 +68,5 @@ inject_navbar_into_files() {
     # Clean up
     rm "$temp_js_file"
     
-    echo "✅ Navbar injection completed using configuration variables!"
+    echo "✅ Navbar build completed using configuration variables!"
 }

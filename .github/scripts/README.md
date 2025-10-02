@@ -7,7 +7,7 @@ This directory contains all automation scripts for the documentation build and d
 ```
 .github/scripts/
 ├── config.sh              # Configuration parameters (no hardcoded values)
-├── navbar-inject.sh        # Navbar injection functions
+├── navbar-builder.sh       # Navbar builder functions
 ├── deploy-to-pages.sh      # Main deployment script
 ├── build_docs.py          # Python documentation builder
 └── smart-extract-docs.py  # README content extraction
@@ -22,10 +22,10 @@ Contains all configurable parameters including:
 - Build directories
 - Git configuration
 
-### navbar-inject.sh
-Modular functions for injecting navbar elements into HTML files:
-- `generate_navbar_js()` - Creates JavaScript injection code
-- `inject_navbar_into_files()` - Injects navbar into HTML files
+### navbar-builder.sh
+Modular functions for building navbar elements into HTML files:
+- `generate_navbar_js()` - Creates JavaScript navbar code
+- `build_navbar_into_files()` - Builds navbar into HTML files
 
 ### deploy-to-pages.sh
 Main deployment script that:

@@ -57,9 +57,9 @@ jobs:
         source .github/scripts/config.sh
         python3 .github/scripts/build_docs.py
         
-        # Inject navbar using modular function
-        source .github/scripts/navbar-inject.sh
-        inject_navbar_into_files "${BUILD_DIR}"
+        # Build navbar using modular function
+        source .github/scripts/navbar-builder.sh
+        build_navbar_into_files "${BUILD_DIR}"
         
         echo "Documentation build with navbar completed!"
 
