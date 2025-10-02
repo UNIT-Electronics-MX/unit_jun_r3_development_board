@@ -218,13 +218,11 @@
 <li><a href="resources/pinout/unit_pinout_v_0_0_1_ue0081_unit_jun_r3_en.jpg">Pinout Diagram</a></li>
 <li><a href="https://unit-electronics-mx.github.io/unit_jun_r3_development_board/software/getting-started.html">Getting Started Guide</a></li>
 </ul>
-<h2 id="license"><a class="header" href="#license">License</a></h2>
-<p>t-electronics-mx.github.io/unit_jun_r3_development_board/)** | 📄 <strong><a href="https://unit-electronics-mx.github.io/unit_jun_r3_development_board/datasheet_professional.html">Professional Datasheet</a></strong></p>
-<h2 id="-unitnse"><a class="header" href="#-unitnse">📝 UNITnse</a></h2>
+<h2 id="-license"><a class="header" href="#-license">📝 License</a></h2>
 <p>All hardware and documentation in this project are licensed under the <strong>MIT License</strong>.<br />
 Please refer to <a href="LICENSE.html"><code>LICENSE.md</code></a> for full terms.</p>
 <div align="center">
-  <sub>Template created by UNIT Electronics</sub>
+  <sub>Template created by UNIT Electronics • Adapt this file to document your board!</sub>
 </div><div style="break-before: page; page-break-before: always;"></div><h1 id="hardware-overview"><a class="header" href="#hardware-overview">Hardware Overview</a></h1>
 <div align="center">
     <div align="center"><a href="hardware/../resources/unit_sch_v_0_0_1_ue0081_Jun-R3.pdf"><img src="hardware/../resources/schematics_icon.jpg" style="max-width: 500px; height: auto;" alt="Schematics"><br/> Schematics</a></div>
@@ -439,6 +437,52 @@ void loop() {
 <div style="break-before: page; page-break-before: always;"></div><h1 id="examples"><a class="header" href="#examples">Examples</a></h1>
 <h2 id="arduinoc-examples"><a class="header" href="#arduinoc-examples">Arduino/C++ Examples</a></h2>
 <p>The following examples demonstrate various features of this development board.</p>
+<h3 id="demo2_oled-demo2_oledino"><a class="header" href="#demo2_oled-demo2_oledino">demo2_oled: demo2_oled.ino</a></h3>
+<pre><code class="language-cpp">#include &lt;Wire.h&gt;
+#include &lt;Adafruit_GFX.h&gt;
+#include &lt;Adafruit_SSD1306.h&gt;
+#include &lt;Adafruit_NeoPixel.h&gt;
+
+#define SCREEN_WIDTH 128
+#define SCREEN_HEIGHT 64
+#define OLED_RESET   -1
+#define OLED_ADDRESS 0x3C
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &amp;Wire, OLED_RESET);
+bool oledOk = false;
+
+#define PIN        8
+#define NUMPIXELS 25
+Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
+
+const unsigned long ADC_INTERVAL   = 500;
+const unsigned long COLOR_INTERVAL = 1000;
+
+unsigned long lastADC   = 0;
+</code></pre>
+<p><a href="https://github.com/UNIT-Electronics-MX/unit_jun_r3_development_board/blob/main/software/examples/c/demo2_oled/demo2_oled.ino">See complete code on GitHub</a></p>
+<h3 id="demo3_neo-demo3_neoino"><a class="header" href="#demo3_neo-demo3_neoino">demo3_neo: demo3_neo.ino</a></h3>
+<pre><code class="language-cpp">#include &lt;Adafruit_NeoPixel.h&gt;
+
+#define PIN 8
+#define NUMPIXELS 25
+#define DELAYVAL 50
+
+Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
+
+void colorWipe(uint32_t color, int wait) {
+    for (int i = 0; i &lt; NUMPIXELS; i++) {
+        pixels.setPixelColor(i, color);
+        pixels.show();
+        delay(wait);
+    }
+}
+
+void theaterChase(uint32_t color, int wait) {
+    for (int a = 0; a &lt; 10; a++) {
+        for (int b = 0; b &lt; 3; b++) {
+            pixels.clear();
+</code></pre>
+<p><a href="https://github.com/UNIT-Electronics-MX/unit_jun_r3_development_board/blob/main/software/examples/c/demo3_neo/demo3_neo.ino">See complete code on GitHub</a></p>
 <h3 id="demo_text-demo_textino"><a class="header" href="#demo_text-demo_textino">demo_text: demo_text.ino</a></h3>
 <pre><code class="language-cpp">#include &lt;Adafruit_NeoPixel.h&gt;
 
@@ -485,52 +529,6 @@ void colorWipe(uint32_t color, int wait) {
         delay(wait);
 </code></pre>
 <p><a href="https://github.com/UNIT-Electronics-MX/unit_jun_r3_development_board/blob/main/software/examples/c/demo1_neo/demo1_neo.ino">See complete code on GitHub</a></p>
-<h3 id="demo3_neo-demo3_neoino"><a class="header" href="#demo3_neo-demo3_neoino">demo3_neo: demo3_neo.ino</a></h3>
-<pre><code class="language-cpp">#include &lt;Adafruit_NeoPixel.h&gt;
-
-#define PIN 8
-#define NUMPIXELS 25
-#define DELAYVAL 50
-
-Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
-
-void colorWipe(uint32_t color, int wait) {
-    for (int i = 0; i &lt; NUMPIXELS; i++) {
-        pixels.setPixelColor(i, color);
-        pixels.show();
-        delay(wait);
-    }
-}
-
-void theaterChase(uint32_t color, int wait) {
-    for (int a = 0; a &lt; 10; a++) {
-        for (int b = 0; b &lt; 3; b++) {
-            pixels.clear();
-</code></pre>
-<p><a href="https://github.com/UNIT-Electronics-MX/unit_jun_r3_development_board/blob/main/software/examples/c/demo3_neo/demo3_neo.ino">See complete code on GitHub</a></p>
-<h3 id="demo2_oled-demo2_oledino"><a class="header" href="#demo2_oled-demo2_oledino">demo2_oled: demo2_oled.ino</a></h3>
-<pre><code class="language-cpp">#include &lt;Wire.h&gt;
-#include &lt;Adafruit_GFX.h&gt;
-#include &lt;Adafruit_SSD1306.h&gt;
-#include &lt;Adafruit_NeoPixel.h&gt;
-
-#define SCREEN_WIDTH 128
-#define SCREEN_HEIGHT 64
-#define OLED_RESET   -1
-#define OLED_ADDRESS 0x3C
-Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &amp;Wire, OLED_RESET);
-bool oledOk = false;
-
-#define PIN        8
-#define NUMPIXELS 25
-Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
-
-const unsigned long ADC_INTERVAL   = 500;
-const unsigned long COLOR_INTERVAL = 1000;
-
-unsigned long lastADC   = 0;
-</code></pre>
-<p><a href="https://github.com/UNIT-Electronics-MX/unit_jun_r3_development_board/blob/main/software/examples/c/demo2_oled/demo2_oled.ino">See complete code on GitHub</a></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="hardware-documentation--resources"><a class="header" href="#hardware-documentation--resources">Hardware Documentation &amp; Resources</a></h1>
 <h2 id="product-datasheet"><a class="header" href="#product-datasheet">Product Datasheet</a></h2>
 <p>Official product documentation with complete technical specifications.</p>
@@ -561,7 +559,7 @@ unsigned long lastADC   = 0;
 </div>
 <hr />
 <p><em>Hardware documentation extracted from project files.</em></p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="license-1"><a class="header" href="#license-1">License</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="license"><a class="header" href="#license">License</a></h1>
 <p>MIT License</p>
 <p>Copyright (c) 2025 UNIT-Electronics-MX</p>
 <p>Permission is hereby granted, free of charge, to any person obtaining a copy
