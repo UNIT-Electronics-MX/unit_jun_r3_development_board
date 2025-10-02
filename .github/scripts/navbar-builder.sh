@@ -48,7 +48,7 @@ EOF
 build_navbar_into_files() {
     local build_dir="$1"
     
-    echo "🔗 Building configurable navbar links..."
+    echo " Building configurable navbar links..."
     
     # Generate the JavaScript code
     local navbar_js=$(generate_navbar_js)
@@ -68,5 +68,5 @@ build_navbar_into_files() {
     # Clean up
     rm "$temp_js_file"
     
-    echo "✅ Navbar build completed using configuration variables!"
+    echo "Navbar build completed using configuration variables!"
 }
