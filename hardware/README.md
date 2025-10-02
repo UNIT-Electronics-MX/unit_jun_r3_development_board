@@ -1,7 +1,7 @@
 # Hardware
 
 <div align="center">
-    <a href="../resources/unit_sch_v_0_0_1_ue0081_Jun-R3.pdf"><img src="../resources/schematics_icon.jpg" width="500px"><br/>Schematics</a>
+    <a href="../resources/unit_sch_v_0_0_1_ue0081_Jun-R3.pdf"><img src="./resources/schematics_icon.jpg" width="500px"><br/>Schematics</a>
     <br/>
 </div>
 
@@ -37,7 +37,7 @@
 ## Pinout
 
 <div align="center">
-    <a href="../resources/unit_pinout_v_0_0_1_ue0081_unit_jun_r3_en.jpg"><img src="../resources/unit_pinout_v_0_0_1_ue0081_unit_jun_r3_en.png" width="500px"><br/>Pinout</a>
+    <a href="../resources/unit_pinout_v_0_0_1_ue0081_unit_jun_r3_en.jpg"><img src="./resources/unit_pinout_v_0_0_1_ue0081_unit_jun_r3_en.png" width="500px"><br/>Pinout</a>
     <br/><br/>
 
 </div>
@@ -77,12 +77,12 @@
 
 ## Board Dimensions
 <div align="center">
-    <a href="../resources/unit_dimension_v_0_0_1_ue0081_jun_r3.png"><img src="../resources/unit_dimension_v_0_0_1_ue0081_jun_r3.png" width="500px"><br/>Dimensions</a>
+    <a href="../resources/unit_dimension_v_0_0_1_ue0081_jun_r3.png"><img src="./resources/unit_dimension_v_0_0_1_ue0081_jun_r3.png" width="500px"><br/>Dimensions</a>
 </div>
 
 ## Board Topology
 <div align="center">
-    <a href="../resources/unit_topology_v_0_0_1_ue0081_jun_r3.png"><img src="../resources/unit_topology_v_0_0_1_ue0081_jun_r3.png" width="500px"><br/>Topology</a>
+    <a href="../resources/unit_topology_v_0_0_1_ue0081_jun_r3.png"><img src="./resources/unit_topology_v_0_0_1_ue0081_jun_r3.png" width="500px"><br/>Topology</a>
 
 | Ref.  | Description                                                                 |
 |-------|-----------------------------------------------------------------------------|
