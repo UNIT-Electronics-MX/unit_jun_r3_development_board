@@ -67,6 +67,6 @@ Please refer to [`LICENSE.md`](LICENSE.md) for full terms.
 
 
 <div align="center">
-  <sub>Template created by UNIT Electronics • Adapt this file to document your board!</sub>
+  <sub>Template created by UNIT Electronics </sub>
 </div>
 
