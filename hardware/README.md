@@ -5,7 +5,33 @@
     <br/>
 </div>
 
----
+## Electrical Specifications
+### Power Consumption
+
+| Symbol    | Description                          | Min | Typ | Max | Unit | Condition              |
+| --------- | ------------------------------------ | --- | --- | --- | ---- | ---------------------- |
+| V_IN max  | Maximum input voltage (VIN pin/jack) | 7   | —   | 20  | V    | External DC jack input |
+| V_USB max | Maximum input voltage (USB-C port)   | —   | —   | 5.5 | V    | USB-C connector        |
+| P_max     | Maximum power consumption (board)    | —   | —   | xx  | mA   | Board level            |
+| I_max     | Maximum current (board level)        | 1.7 | 2   | 2.1 | A    | Total consumption      |
+| I_3V3     | Current available at 3.3 V rail      | —   | 600 | —   | mA   | Regulator output       |
+| IOH Max   | Output high current per GPIO         | —   | —   | 8   | mA   | At VDD – 0.4 V (VOH)   |
+| IOL Max   | Output low current per GPIO          | —   | —   | 8   | mA   | At VSS + 0.4 V (VOL)   |
+
+
+
+### DC Characteristics ATmega328
+
+*(TA = –40 °C to +125 °C, VCC = 2.7 V to 5.5 V)*
+
+| Parameter                                | Condition            | Symbol | Min     | Typ | Max     | Unit |
+| ---------------------------------------- | -------------------- | ------ | ------- | --- | ------- | ---- |
+| Input low voltage (except XTAL1, RESET)  | VCC = 2.7 V to 5.5 V | VIL    | –0.5    | —   | 0.3 VCC | V    |
+| Input high voltage (except XTAL1, RESET) | VCC = 2.7 V to 5.5 V | VIH    | 0.6 VCC | —   | VCC+0.5 | V    |
+| Input low voltage (XTAL1 pin)            | VCC = 2.7 V to 5.5 V | VIL1   | –0.5    | —   | 0.1 VCC | V    |
+| Input high voltage (XTAL1 pin)           | VCC = 2.7 V to 5.5 V | VIH1   | 0.7 VCC | —   | VCC+0.5 | V    |
+
+
 
 ## Pinout
 

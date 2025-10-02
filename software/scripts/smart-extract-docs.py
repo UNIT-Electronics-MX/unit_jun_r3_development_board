@@ -55,9 +55,9 @@ def get_github_pages_url():
             return f"https://{owner}.github.io/{repo}"
     return None
 
-def print_status(message: str, emoji: str = "📝"):
+def print_status(message: str, emoji: str = ""):
     """Print a formatted status message."""
-    print(f"{emoji} {message}")
+    print(f"{message}")
 
 def read_file_content(file_path):
     """Read content from a file with error handling."""
@@ -82,60 +82,27 @@ def write_file_content(file_path, content):
 def fix_image_sizes(content: str) -> str:
     """Fix image sizes for better display in mdBook, preserving HTML link structure."""
     
-    # Use placeholder approach to avoid regex lookbehind issues
-    temp_placeholder = "___TEMP_PROCESSED___"
-    processed_items = []
-    
-    def store_processed(match):
-        processed_items.append(match.group(0))
-        return f"{temp_placeholder}{len(processed_items)-1}___"
-    
-    # First, handle HTML link structures with images that are already inside div center - just fix sizing
-    # Pattern: <div align="center"><a href="..."><img src="..." width="..." ...><br/> Text</a></div>
-    content = re.sub(
-        r'<div align="center">\s*<a href="([^"]+)"><img src="([^"]+)"[^>]*><br/>\s*([^<]*)</a>\s*</div>',
-        lambda m: store_processed(re.match(r'.*', f'<div align="center"><a href="{m.group(1)}"><img src="{m.group(2)}" style="max-width: 500px; height: auto;" alt="{m.group(3)}"><br/> {m.group(3)}</a></div>')),
-        content
-    )
-    
-    # Handle standalone link+image structures (not already processed)
+    # First, handle HTML link structures with images - these should be preserved as-is but with better styling
     # Pattern: <a href="..."><img src="..." width="..." ...><br/> Text</a>
-    def process_standalone_link_img(match):
-        full_match = match.group(0)
-        # Check if this is part of an already processed item
-        for item in processed_items:
-            if full_match in item:
-                return full_match  # Don't process if already handled
-        
-        href = match.group(1)
-        src = match.group(2)
-        text = match.group(3)
-        return f'<div align="center"><a href="{href}"><img src="{src}" style="max-width: 500px; height: auto;" alt="{text}"><br/> {text}</a></div>'
-    
     content = re.sub(
         r'<a href="([^"]+)"><img src="([^"]+)"[^>]*><br/>\s*([^<]*)</a>',
-        process_standalone_link_img,
+        r'<div align="center"><a href="\1"><img src="\2" style="max-width: 500px; height: auto;" alt="\3"><br/> \3</a></div>',
         content
     )
     
-    # Handle standalone img tags with width attribute (not part of links or already centered)
+    # Handle standalone img tags with width attribute (not part of links)
     # We'll temporarily mark linked images to avoid processing them
-    temp_placeholder_linked = "___LINKED_IMG___"
+    temp_placeholder = "___LINKED_IMG___"
     
-    # Temporarily replace linked images that we haven't already processed
+    # Temporarily replace linked images
     linked_images = []
     def store_linked_img(match):
-        full_match = match.group(0)
-        # Don't store if already processed
-        for item in processed_items:
-            if full_match in item:
-                return full_match
-        linked_images.append(full_match)
-        return f"{temp_placeholder_linked}{len(linked_images)-1}___"
+        linked_images.append(match.group(0))
+        return f"{temp_placeholder}{len(linked_images)-1}___"
     
     content = re.sub(r'<a[^>]*>.*?<img[^>]*>.*?</a>', store_linked_img, content, flags=re.DOTALL)
     
-    # Now process standalone images that aren't already handled
+    # Now process standalone images
     content = re.sub(
         r'<img src="([^"]+)" width="[^"]*"([^>]*)>',
         r'<img src="\1" style="max-width: 80%; height: auto;"\2>',
@@ -158,11 +125,7 @@ def fix_image_sizes(content: str) -> str:
     
     # Restore linked images
     for i, linked_img in enumerate(linked_images):
-        content = content.replace(f"{temp_placeholder_linked}{i}___", linked_img)
-    
-    # Restore processed items
-    for i, processed_item in enumerate(processed_items):
-        content = content.replace(f"{temp_placeholder}{i}___", processed_item)
+        content = content.replace(f"{temp_placeholder}{i}___", linked_img)
     
     return content
 
@@ -393,11 +356,11 @@ The following examples demonstrate various features of this development board.
                 code_link = ""
                 if github_url:
                     relative_path = f"software/examples/c/{code_file.name}"
-                    code_link = f"[📄 See complete code on GitHub]({github_url}/blob/main/{relative_path})"
+                    code_link = f"[See complete code on GitHub]({github_url}/blob/main/{relative_path})"
                 else:
-                    code_link = f"[📄 See complete code on GitHub: {code_file.name}](#{code_file.stem.lower()})"
+                    code_link = f"[See complete code on GitHub: {code_file.name}](#{code_file.stem.lower()})"
                 
-                examples_content += f"""### ⚡ {code_file.stem}
+                examples_content += f"""### {code_file.stem}
 ```cpp
 {preview}
 ```
@@ -424,11 +387,11 @@ The following examples demonstrate various features of this development board.
                         if github_url:
                             # Create GitHub blob URL for the file
                             relative_path = f"software/examples/c/{example_dir.name}/{code_file.name}"
-                            code_link = f"[📄 See complete code on GitHub]({github_url}/blob/main/{relative_path})"
+                            code_link = f"[See complete code on GitHub]({github_url}/blob/main/{relative_path})"
                         else:
-                            code_link = f"[📄 See complete code on GitHub: {code_file.name}](#{example_dir.name.lower()})"
+                            code_link = f"[See complete code on GitHub: {code_file.name}](#{example_dir.name.lower()})"
                         
-                        examples_content += f"""### ⚡ {example_dir.name}: {code_file.name}
+                        examples_content += f"""### {example_dir.name}: {code_file.name}
 ```cpp
 {preview}
 ```
@@ -464,11 +427,11 @@ The following MicroPython examples demonstrate usage with microcontrollers.
                 code_link = ""
                 if github_url:
                     relative_path = f"software/examples/micropython/{code_file.name}"
-                    code_link = f"[📄 See complete code on GitHub]({github_url}/blob/main/{relative_path})"
+                    code_link = f"[See complete code on GitHub]({github_url}/blob/main/{relative_path})"
                 else:
-                    code_link = f"[📄 See complete code on GitHub: {code_file.name}](#{code_file.stem.lower()})"
+                    code_link = f"[See complete code on GitHub: {code_file.name}](#{code_file.stem.lower()})"
                 
-                examples_content += f"""### 🐍 {code_file.stem}
+                examples_content += f"""### {code_file.stem}
 ```python
 {preview}
 ```
@@ -503,11 +466,11 @@ The following Python examples demonstrate usage with the sensor.
                 code_link = ""
                 if github_url:
                     relative_path = f"software/examples/python/{code_file.name}"
-                    code_link = f"[📄 See complete code on GitHub]({github_url}/blob/main/{relative_path})"
+                    code_link = f"[See complete code on GitHub]({github_url}/blob/main/{relative_path})"
                 else:
-                    code_link = f"[📄 See complete code on GitHub: {code_file.name}](#{code_file.stem.lower()})"
+                    code_link = f"[See complete code on GitHub: {code_file.name}](#{code_file.stem.lower()})"
                 
-                examples_content += f"""### 🐍 {code_file.stem}
+                examples_content += f"""### {code_file.stem}
 ```python
 {preview}
 ```
@@ -616,64 +579,93 @@ def create_resources_page() -> str:
     hardware_resources_section = "### Hardware Resources\n"
     
     if schematic_link and schematic_filename:
-        hardware_resources_section += f"- 🔌 [Schematic Diagram]({schematic_link}) - Complete circuit schematic\n"
+        hardware_resources_section += f"- [Schematic Diagram]({schematic_link}) - Complete circuit schematic\n"
     else:
-        hardware_resources_section += "- 🔌 Schematic Diagram - Not found (looking for unit_sch_*.pdf)\n"
+        hardware_resources_section += "- Schematic Diagram - Not found (looking for unit_sch_*.pdf)\n"
     
-    hardware_resources_section += """-  [Pinout Reference](hardware/pinout.md) - Pin configuration details
+    hardware_resources_section += """- [Pinout Reference](hardware/pinout.md) - Pin configuration details
 
 """
     
     # Get dynamic GitHub Pages URL
     pages_url = get_github_pages_url()
     
-    resources_content = f"""# Datasheet & Documentation
+    # Find product PDF in hardware directory
+    project_root = Path.cwd()
+    hardware_dir = project_root / "hardware"
+    product_pdf = None
+    
+    # Look for unit_product_*.pdf
+    for pdf_file in hardware_dir.glob("unit_product_*.pdf"):
+        product_pdf = pdf_file
+        break
+    
+    resources_content = f"""# Hardware Documentation & Resources
 
-## 📄 Professional Datasheet
+## Product Datasheet
 
-Complete technical specifications and professional documentation.
+Official product documentation with complete technical specifications.
+"""
+    
+    # Add product PDF if found
+    if product_pdf:
+        product_filename = product_pdf.name
+        resources_content += f"""
+**[Download Product Datasheet](hardware/{product_filename})** - Official PDF documentation
 
-📎 **<a href="{pages_url}/datasheet_professional.html" target="_blank">View Professional Datasheet</a>** - Interactive HTML version
+"""
+    else:
+        resources_content += """
+Product datasheet not found in hardware directory.
 
-📎 **<a href="{pages_url}/datasheet_professional.pdf" target="_blank">Download PDF Datasheet</a>** - Downloadable PDF version
+"""
+    
+    resources_content += f"""
+## Hardware Resources
 
-## 🔗 Additional Resources
+{hardware_resources_section}
 
-{hardware_resources_section}### Software Resources
-- 💻 [Getting Started Guide](software/getting-started.md) - Setup and first steps  
-- 📝 [Code Examples](software/examples.md) - Arduino sketches and demos
-- 🛠️ [Development Setup](software/getting-started.md#development-environment) - IDE configuration
+## Software Resources
+- [Getting Started Guide](software/getting-started.md) - Setup and first steps  
+- [Code Examples](software/examples.md) - Arduino sketches and demos
+- [Development Setup](software/getting-started.md#development-environment) - IDE configuration
 
-### External Links
+## External Links
 """
 
     # Add GitHub link if available
     github_url = get_github_repo_url()
     if github_url:
-        resources_content += f"- 🔗 <a href=\"{github_url}\" target=\"_blank\">Source Code Repository</a> - Complete project files\n"
-    
-    # Build Quick Reference table with dynamic schematic link
-    schematic_row = ""
-    if schematic_link and schematic_filename:
-        schematic_row = f'| 🔌 **Schematic** | Circuit diagram | <a href="{schematic_link}" target="_blank">PDF</a> |\n'
-    else:
-        schematic_row = '| 🔌 **Schematic** | Circuit diagram | Not found |\n'
+        resources_content += f"- [Source Code Repository]({github_url}) - Complete project files\n"
     
     resources_content += f"""
-## 📋 Quick Reference
+## Quick Reference
 
-| Resource Type | Description | Link |
-|---------------|-------------|------|
-| 📄 **Datasheet (HTML)** | Interactive technical specs | <a href="{pages_url}/datasheet_professional.html" target="_blank">View</a> |
-| 📄 **Datasheet (PDF)** | Downloadable technical specs | <a href="{pages_url}/datasheet_professional.pdf" target="_blank">PDF</a> |
-{schematic_row}| 📐 **Dimensions** | Board measurements | [View](hardware/dimensions.md) |
-| 🔧 **Pinout** | Pin configuration | [View](hardware/pinout.md) |
-| 💻 **Examples** | Code samples | [View](software/examples.md) |
-| 🔧 **Setup Guide** | Getting started | [View](software/getting-started.md) |
+| Resource | Description | Link |
+|----------|-------------|------|"""
+    
+    # Add product PDF to quick reference
+    if product_pdf:
+        product_filename = product_pdf.name
+        resources_content += f"""
+| **Product Datasheet** | Official technical documentation | [PDF](hardware/{product_filename}) |"""
+    
+    # Add schematic
+    if schematic_link and schematic_filename:
+        resources_content += f"""
+| **Schematic** | Circuit diagram | [PDF]({schematic_link}) |"""
+    else:
+        resources_content += f"""
+| **Schematic** | Circuit diagram | Not found |"""
+    
+    resources_content += f"""
+| **Pinout** | Pin configuration | [View](hardware/pinout.md) |
+| **Examples** | Code samples | [View](software/examples.md) |
+| **Setup Guide** | Getting started | [View](software/getting-started.md) |
 
 ---
 
-*For the most up-to-date information, please refer to the official documentation and repository.*
+*Hardware documentation extracted from project files.*
 """
     
     return resources_content
@@ -710,16 +702,32 @@ def copy_resources():
                         pass
         
         if copied > 0:
-            print_status(f"Imágenes copiadas: {copied} archivos", "🖼️")
+            print_status(f"Imágenes copiadas: {copied} archivos")
     
-    # Copy PDFs from hardware and docs directories
+    # Copy PDFs from hardware directory (including product PDF)
+    hardware_target = book_path / "src" / "hardware"
+    hardware_target.mkdir(parents=True, exist_ok=True)
+    
+    pdf_copied = 0
+    
+    # Copy all PDFs from hardware directory
+    if hardware_dir.exists():
+        for pdf_file in hardware_dir.glob("*.pdf"):
+            try:
+                target_file = hardware_target / pdf_file.name
+                shutil.copy2(pdf_file, target_file)
+                pdf_copied += 1
+                print_status(f"Copied hardware PDF: {pdf_file.name}")
+            except Exception as e:
+                print_status(f"Warning: Could not copy {pdf_file.name}: {e}")
+    
+    # Also copy to resources for compatibility
     pdf_targets = [
         book_path / "src" / "resources",
         book_path / "src" / "hardware" / "resources"
     ]
     
-    pdf_sources = [hardware_dir, docs_dir]
-    pdf_copied = 0
+    pdf_sources = [docs_dir]
     
     for source_dir in pdf_sources:
         if source_dir.exists():
@@ -735,7 +743,7 @@ def copy_resources():
                         pass
     
     if pdf_copied > 0:
-        print_status(f"PDFs copiados: {pdf_copied} archivos", "📄")
+        print_status(f"PDFs copiados: {pdf_copied} archivos")
     
     return copied + pdf_copied
 
@@ -784,7 +792,7 @@ def create_summary() -> str:
 def main():
     """Main execution."""
     
-    print_status("Extrayendo contenido SIN duplicar títulos...", "🎯")
+    print_status("Extrayendo contenido SIN duplicar títulos...")
     
     # Setup directories
     project_root = Path.cwd()
@@ -795,19 +803,19 @@ def main():
     (src_path / "software" / "examples").mkdir(parents=True, exist_ok=True)
     
     # Process content intelligently
-    print_status("Procesando README principal...", "📄")
+    print_status("Procesando README principal...")
     intro_content = process_main_readme()
     
-    print_status("Procesando hardware (sin duplicar títulos)...", "🔧")
+    print_status("Procesando hardware (sin duplicar títulos)...")
     hardware_pages = process_hardware_readme()
     
-    print_status("Procesando software...", "💻")
+    print_status("Procesando software...")
     software_pages = process_software_content()
     
-    print_status("Procesando licencia...", "📄")
+    print_status("Procesando licencia...")
     license_content = process_license()
     
-    print_status("Creando página de recursos...", "📋")
+    print_status("Creando página de recursos...")
     resources_content = create_resources_page()
     
     # Prepare all files

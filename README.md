@@ -46,7 +46,7 @@ UNIT JUN R3 is a versatile and modular development board based on the ATmega328P
 
 </div>
 
-## 
+## Applications
 
 - **Prototyping:** Quickly develop and test embedded system ideas.
 - **Education:** Perfect for learning microcontroller basics and electronics.
