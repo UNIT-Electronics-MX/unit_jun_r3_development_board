@@ -40,7 +40,8 @@ UNIT JUN R3 is a versatile and modular development board based on the ATmega328P
 | Connectivity      | USB-C for programming and power                     |
 | Form Factor       | UNO-compatible (68.6mm x 53.4mm)                      |
 | Development IDEs  | Arduino IDE, PlatformIO                             |
-| Onboard Features  | Built-in NeoPixel matrix, user LED, reset button    |
+| Onboard Features      | Integrated 5x5 NeoPixel matrix, user-programmable LED, reset button |
+| JST 1.0mm 4-Pin Port  | QWIIC-compatible I2C connector for easy sensor and module expansion |
 
 </div>
 
