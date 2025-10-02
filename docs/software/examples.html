@@ -1,14 +1,14 @@
 <!DOCTYPE HTML>
-<html lang="en" class="light sidebar-visible" dir="ltr">
+<html lang="en" class="navy sidebar-visible" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Examples</title>
+        <title>Examples - UNIT JUN R3 Development Board</title>
 
 
         <!-- Custom HTML head -->
 
-        <meta name="description" content="">
+        <meta name="description" content="Complete documentation for UNIT JUN R3 Arduino-compatible development board">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
@@ -34,7 +34,7 @@
         <!-- Provide site root and default themes to javascript -->
         <script>
             const path_to_root = "../";
-            const default_light_theme = "light";
+            const default_light_theme = "navy";
             const default_dark_theme = "navy";
             window.path_to_searchindex_js = "../searchindex.js";
         </script>
@@ -77,7 +77,7 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             const html = document.documentElement;
-            html.classList.remove('light')
+            html.classList.remove('navy')
             html.classList.add(theme);
             html.classList.add("js");
         </script>
@@ -138,11 +138,17 @@
                         </button>
                     </div>
 
-                    <h1 class="menu-title"></h1>
+                    <h1 class="menu-title">UNIT JUN R3 Development Board</h1>
 
                     <div class="right-buttons">
                         <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/UNIT-Electronics-MX/unit_jun_r3_development_board" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/UNIT-Electronics-MX/unit_jun_r3_development_board/edit/main/software/book/src/software/examples.md" title="Suggest an edit" aria-label="Suggest an edit" rel="edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
                         </a>
 
                     </div>
@@ -178,52 +184,6 @@
                         <h1 id="examples"><a class="header" href="#examples">Examples</a></h1>
 <h2 id="arduinoc-examples"><a class="header" href="#arduinoc-examples">Arduino/C++ Examples</a></h2>
 <p>The following examples demonstrate various features of this development board.</p>
-<h3 id="demo2_oled-demo2_oledino"><a class="header" href="#demo2_oled-demo2_oledino">demo2_oled: demo2_oled.ino</a></h3>
-<pre><code class="language-cpp">#include &lt;Wire.h&gt;
-#include &lt;Adafruit_GFX.h&gt;
-#include &lt;Adafruit_SSD1306.h&gt;
-#include &lt;Adafruit_NeoPixel.h&gt;
-
-#define SCREEN_WIDTH 128
-#define SCREEN_HEIGHT 64
-#define OLED_RESET   -1
-#define OLED_ADDRESS 0x3C
-Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &amp;Wire, OLED_RESET);
-bool oledOk = false;
-
-#define PIN        8
-#define NUMPIXELS 25
-Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
-
-const unsigned long ADC_INTERVAL   = 500;
-const unsigned long COLOR_INTERVAL = 1000;
-
-unsigned long lastADC   = 0;
-</code></pre>
-<p><a href="https://github.com/UNIT-Electronics-MX/unit_jun_r3_development_board/blob/main/software/examples/c/demo2_oled/demo2_oled.ino">See complete code on GitHub</a></p>
-<h3 id="demo3_neo-demo3_neoino"><a class="header" href="#demo3_neo-demo3_neoino">demo3_neo: demo3_neo.ino</a></h3>
-<pre><code class="language-cpp">#include &lt;Adafruit_NeoPixel.h&gt;
-
-#define PIN 8
-#define NUMPIXELS 25
-#define DELAYVAL 50
-
-Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
-
-void colorWipe(uint32_t color, int wait) {
-    for (int i = 0; i &lt; NUMPIXELS; i++) {
-        pixels.setPixelColor(i, color);
-        pixels.show();
-        delay(wait);
-    }
-}
-
-void theaterChase(uint32_t color, int wait) {
-    for (int a = 0; a &lt; 10; a++) {
-        for (int b = 0; b &lt; 3; b++) {
-            pixels.clear();
-</code></pre>
-<p><a href="https://github.com/UNIT-Electronics-MX/unit_jun_r3_development_board/blob/main/software/examples/c/demo3_neo/demo3_neo.ino">See complete code on GitHub</a></p>
 <h3 id="demo_text-demo_textino"><a class="header" href="#demo_text-demo_textino">demo_text: demo_text.ino</a></h3>
 <pre><code class="language-cpp">#include &lt;Adafruit_NeoPixel.h&gt;
 
@@ -270,6 +230,52 @@ void colorWipe(uint32_t color, int wait) {
         delay(wait);
 </code></pre>
 <p><a href="https://github.com/UNIT-Electronics-MX/unit_jun_r3_development_board/blob/main/software/examples/c/demo1_neo/demo1_neo.ino">See complete code on GitHub</a></p>
+<h3 id="demo3_neo-demo3_neoino"><a class="header" href="#demo3_neo-demo3_neoino">demo3_neo: demo3_neo.ino</a></h3>
+<pre><code class="language-cpp">#include &lt;Adafruit_NeoPixel.h&gt;
+
+#define PIN 8
+#define NUMPIXELS 25
+#define DELAYVAL 50
+
+Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
+
+void colorWipe(uint32_t color, int wait) {
+    for (int i = 0; i &lt; NUMPIXELS; i++) {
+        pixels.setPixelColor(i, color);
+        pixels.show();
+        delay(wait);
+    }
+}
+
+void theaterChase(uint32_t color, int wait) {
+    for (int a = 0; a &lt; 10; a++) {
+        for (int b = 0; b &lt; 3; b++) {
+            pixels.clear();
+</code></pre>
+<p><a href="https://github.com/UNIT-Electronics-MX/unit_jun_r3_development_board/blob/main/software/examples/c/demo3_neo/demo3_neo.ino">See complete code on GitHub</a></p>
+<h3 id="demo2_oled-demo2_oledino"><a class="header" href="#demo2_oled-demo2_oledino">demo2_oled: demo2_oled.ino</a></h3>
+<pre><code class="language-cpp">#include &lt;Wire.h&gt;
+#include &lt;Adafruit_GFX.h&gt;
+#include &lt;Adafruit_SSD1306.h&gt;
+#include &lt;Adafruit_NeoPixel.h&gt;
+
+#define SCREEN_WIDTH 128
+#define SCREEN_HEIGHT 64
+#define OLED_RESET   -1
+#define OLED_ADDRESS 0x3C
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &amp;Wire, OLED_RESET);
+bool oledOk = false;
+
+#define PIN        8
+#define NUMPIXELS 25
+Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
+
+const unsigned long ADC_INTERVAL   = 500;
+const unsigned long COLOR_INTERVAL = 1000;
+
+unsigned long lastADC   = 0;
+</code></pre>
+<p><a href="https://github.com/UNIT-Electronics-MX/unit_jun_r3_development_board/blob/main/software/examples/c/demo2_oled/demo2_oled.ino">See complete code on GitHub</a></p>
 
                     </main>
 
