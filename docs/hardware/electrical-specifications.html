@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Introduction</title>
+        <title>Electrical Specifications</title>
 
 
         <!-- Custom HTML head -->
@@ -12,34 +12,34 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="favicon.svg">
-        <link rel="shortcut icon" href="favicon.png">
-        <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
-        <link rel="stylesheet" href="css/print.css" media="print">
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="fonts/fonts.css">
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" id="highlight-css" href="highlight.css">
-        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
-        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+        <link rel="stylesheet" id="highlight-css" href="../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
 
 
         <!-- Provide site root and default themes to javascript -->
         <script>
-            const path_to_root = "";
+            const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex.js";
+            window.path_to_searchindex_js = "../searchindex.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc.js"></script>
+        <script src="../toc.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -106,7 +106,7 @@
             <!-- populated by js -->
             <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
             <noscript>
-                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
             </noscript>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -141,7 +141,7 @@
                     <h1 class="menu-title"></h1>
 
                     <div class="right-buttons">
-                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
 
@@ -175,61 +175,36 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="unit-jun-r3-development-board"><a class="header" href="#unit-jun-r3-development-board">UNIT JUN R3 Development Board</a></h1>
-<h2 id="introduction"><a class="header" href="#introduction">Introduction</a></h2>
-<p>UNIT JUN R3 is a versatile and modular development board based on the ATmega328P microcontroller, compatible with the UNO-style form factor. Designed for rapid prototyping, it is well-suited for embedded systems education, interactive projects, and wearable technology. The board offers flexible power input options, modern connectivity, and user-friendly interfaces to streamline development workflows. It also features an integrated 5×5 NeoPixel LED matrix, ideal for creating visual indicators, feedback systems, or simple dynamic displays.</p>
-<div align="center">
-  <img src="./resources/unit_top_v_0_0_1_ue0081_jun_r3.png" style="max-width: 80%; height: auto;" alt="Development Board">
-  <p><em>UNIT Jun R3</em></p>
-</div>
-<div align="center">
-<h3 id="quick-setup"><a class="header" href="#quick-setup">Quick Setup</a></h3>
-<p><a href="https://unit-electronics-mx.github.io/unit_jun_r3_development_board/mdbook/index.html"><div align="center"><img src="https://img.shields.io/badge/Product%20Wiki-blue?style=for-the-badge" alt="Product Wiki" style="max-width: 80%; height: auto;"></div></a>
-<a href="https://unit-electronics-mx.github.io/unit_jun_r3_development_board/datasheet_professional.html"><div align="center"><img src="https://img.shields.io/badge/Datasheet-green?style=for-the-badge" alt="Datasheet" style="max-width: 80%; height: auto;"></div></a>
-<a href="https://uelectronics.com/"><div align="center"><img src="https://img.shields.io/badge/Buy%20Now-orange?style=for-the-badge" alt="Buy Now" style="max-width: 80%; height: auto;"></div></a>
-<a href="https://unit-electronics-mx.github.io/unit_jun_r3_development_board/mdbook/software/getting-started.html"><div align="center"><img src="https://img.shields.io/badge/Getting%20Started-purple?style=for-the-badge" alt="Getting Started" style="max-width: 80%; height: auto;"></div></a></p>
-</div>
-<div align="center" >
-<h2 id="overview"><a class="header" href="#overview">Overview</a></h2>
-<div class="table-wrapper"><table><thead><tr><th>Feature</th><th>Description</th></tr></thead><tbody>
-<tr><td>Microcontroller</td><td>ATmega328P (8-bit AVR)</td></tr>
-<tr><td>Memory</td><td>32KB Flash, 2KB SRAM, 1KB EEPROM</td></tr>
-<tr><td>Clock Speed</td><td>16 MHz</td></tr>
-<tr><td>Power Supply</td><td>USB-C (5V)</td></tr>
-<tr><td>Interfaces</td><td>UART, I2C, SPI, PWM, ADC, GPIO</td></tr>
-<tr><td>NeoPixel Matrix</td><td>5x5 RGB LED Matrix (WS2812B)</td></tr>
-<tr><td>Connectivity</td><td>USB-C for programming and power</td></tr>
-<tr><td>Form Factor</td><td>UNO-compatible (68.6mm x 53.4mm)</td></tr>
-<tr><td>Development IDEs</td><td>Arduino IDE, PlatformIO</td></tr>
-<tr><td>Onboard Features</td><td>Built-in NeoPixel matrix, user LED, reset button</td></tr>
+                        <h1 id="electrical-specifications"><a class="header" href="#electrical-specifications">Electrical Specifications</a></h1>
+<h3 id="power-consumption"><a class="header" href="#power-consumption">Power Consumption</a></h3>
+<div class="table-wrapper"><table><thead><tr><th>Symbol</th><th>Description</th><th>Min</th><th>Typ</th><th>Max</th><th>Unit</th><th>Condition</th></tr></thead><tbody>
+<tr><td>V_IN max</td><td>Maximum input voltage (VIN pin/jack)</td><td>7</td><td>—</td><td>20</td><td>V</td><td>External DC jack input</td></tr>
+<tr><td>V_USB max</td><td>Maximum input voltage (USB-C port)</td><td>—</td><td>—</td><td>5.5</td><td>V</td><td>USB-C connector</td></tr>
+<tr><td>P_max</td><td>Maximum power consumption (board)</td><td>—</td><td>—</td><td>xx</td><td>mA</td><td>Board level</td></tr>
+<tr><td>I_max</td><td>Maximum current (board level)</td><td>1.7</td><td>2</td><td>2.1</td><td>A</td><td>Total consumption</td></tr>
+<tr><td>I_3V3</td><td>Current available at 3.3 V rail</td><td>—</td><td>600</td><td>—</td><td>mA</td><td>Regulator output</td></tr>
+<tr><td>IOH Max</td><td>Output high current per GPIO</td><td>—</td><td>—</td><td>8</td><td>mA</td><td>At VDD – 0.4 V (VOH)</td></tr>
+<tr><td>IOL Max</td><td>Output low current per GPIO</td><td>—</td><td>—</td><td>8</td><td>mA</td><td>At VSS + 0.4 V (VOL)</td></tr>
 </tbody></table>
-</div></div>
-<h2 id="applications"><a class="header" href="#applications">Applications</a></h2>
-<ul>
-<li><strong>Prototyping:</strong> Quickly develop and test embedded system ideas.</li>
-<li><strong>Education:</strong> Perfect for learning microcontroller basics and electronics.</li>
-<li><strong>Wearables:</strong> Small size and versatile power make it suitable for wearable devices.</li>
-<li><strong>Interactive Displays:</strong> Use the built-in NeoPixel matrix for engaging visual output.</li>
-</ul>
-<h2 id="resources"><a class="header" href="#resources">Resources</a></h2>
-<ul>
-<li><a href="hardware/unit_sch_v_0_0_1_ue0081_Jun-R3.pdf">Schematic Diagram</a></li>
-<li><a href="./resources/pinout/unit_pinout_v_0_0_1_ue0081_unit_jun_r3_en.jpg">Pinout Diagram</a></li>
-<li><a href="firmware/">Firmware Examples</a></li>
-<li><a href="docs/getting_started.html">Getting Started Guide</a></li>
-</ul>
-<h2 id="license"><a class="header" href="#license">License</a></h2>
-<p>All hardware and documentation in this project are licensed under the <strong>MIT License</strong>.<br />
-Please refer to <a href="LICENSE.html"><code>LICENSE.md</code></a> for full terms.</p>
-<div align="center">
-  <sub>Template created by UNIT Electronics</sub>
+</div>
+<h3 id="dc-characteristics-atmega328"><a class="header" href="#dc-characteristics-atmega328">DC Characteristics ATmega328</a></h3>
+<p><em>(TA = –40 °C to +125 °C, VCC = 2.7 V to 5.5 V)</em></p>
+<div class="table-wrapper"><table><thead><tr><th>Parameter</th><th>Condition</th><th>Symbol</th><th>Min</th><th>Typ</th><th>Max</th><th>Unit</th></tr></thead><tbody>
+<tr><td>Input low voltage (except XTAL1, RESET)</td><td>VCC = 2.7 V to 5.5 V</td><td>VIL</td><td>–0.5</td><td>—</td><td>0.3 VCC</td><td>V</td></tr>
+<tr><td>Input high voltage (except XTAL1, RESET)</td><td>VCC = 2.7 V to 5.5 V</td><td>VIH</td><td>0.6 VCC</td><td>—</td><td>VCC+0.5</td><td>V</td></tr>
+<tr><td>Input low voltage (XTAL1 pin)</td><td>VCC = 2.7 V to 5.5 V</td><td>VIL1</td><td>–0.5</td><td>—</td><td>0.1 VCC</td><td>V</td></tr>
+<tr><td>Input high voltage (XTAL1 pin)</td><td>VCC = 2.7 V to 5.5 V</td><td>VIH1</td><td>0.7 VCC</td><td>—</td><td>VCC+0.5</td><td>V</td></tr>
+</tbody></table>
 </div>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../hardware/overview.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
 
-                            <a rel="next prefetch" href="hardware/overview.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../hardware/pinout.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -239,8 +214,11 @@ Please refer to <a href="LICENSE.html"><code>LICENSE.md</code></a> for full term
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../hardware/overview.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
 
-                    <a rel="next prefetch" href="hardware/overview.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../hardware/pinout.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
@@ -255,13 +233,13 @@ Please refer to <a href="LICENSE.html"><code>LICENSE.md</code></a> for full term
         </script>
 
 
-        <script src="elasticlunr.min.js"></script>
-        <script src="mark.min.js"></script>
-        <script src="searcher.js"></script>
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
 
-        <script src="clipboard.min.js"></script>
-        <script src="highlight.js"></script>
-        <script src="book.js"></script>
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
 
         <!-- Custom JS scripts -->
 
