@@ -246,5 +246,34 @@
 
 
     </div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    setTimeout(function() {
+        const menuBar = document.querySelector(".menu-bar .right-buttons");
+        if (menuBar) {
+            const shopLink = document.createElement("a");
+            shopLink.href = "https://uelectronics.com/";
+            shopLink.target = "_blank";
+            shopLink.innerHTML = "🛒";
+            shopLink.title = "Shop";
+            shopLink.style.cssText = "color: #666; text-decoration: none; padding: 4px; font-size: 14px; margin-right: 4px; border: 1px solid #ddd; border-radius: 3px; transition: all 0.2s ease; display: inline-block; text-align: center; width: 24px; height: 24px; line-height: 16px;";
+            shopLink.onmouseover = function() { this.style.borderColor = "#999"; this.style.backgroundColor = "#f5f5f5"; };
+            shopLink.onmouseout = function() { this.style.borderColor = "#ddd"; this.style.backgroundColor = "transparent"; };
+            
+            const repoLink = document.createElement("a");
+            repoLink.href = "https://github.com/UNIT-Electronics-MX/unit_jun_r3_development_board";
+            repoLink.target = "_blank";
+            repoLink.innerHTML = "📋";
+            repoLink.title = "Repository";
+            repoLink.style.cssText = "color: #666; text-decoration: none; padding: 4px; font-size: 14px; margin-right: 4px; border: 1px solid #ddd; border-radius: 3px; transition: all 0.2s ease; display: inline-block; text-align: center; width: 24px; height: 24px; line-height: 16px;";
+            repoLink.onmouseover = function() { this.style.borderColor = "#999"; this.style.backgroundColor = "#f5f5f5"; };
+            repoLink.onmouseout = function() { this.style.borderColor = "#ddd"; this.style.backgroundColor = "transparent"; };
+            
+            menuBar.insertBefore(repoLink, menuBar.firstChild);
+            menuBar.insertBefore(shopLink, menuBar.firstChild);
+        }
+    }, 100);
+});
+</script>
     </body>
 </html>
