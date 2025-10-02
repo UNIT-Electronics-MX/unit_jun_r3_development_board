@@ -26,33 +26,31 @@ ls -la software/book/book/
 echo "🔗 Adding clean navbar links..."
 for html_file in software/book/book/*.html software/book/book/*/*.html software/book/book/*/*/*.html; do
     if [ -f "$html_file" ]; then
-        # Insert minimal navbar links before closing body tag
+        # Insert simple navbar links before closing body tag
         sed -i '/<\/body>/i\
 <script>\
 document.addEventListener("DOMContentLoaded", function() {\
     setTimeout(function() {\
-        const menuBar = document.querySelector(".menu-bar .right-buttons");\
+        const menuBar = document.querySelector(".menu-bar .left-buttons");\
         if (menuBar) {\
             const shopLink = document.createElement("a");\
             shopLink.href = "https://uelectronics.com/";\
             shopLink.target = "_blank";\
-            shopLink.innerHTML = "🛒";\
-            shopLink.title = "Shop";\
-            shopLink.style.cssText = "color: #666; text-decoration: none; padding: 4px; font-size: 14px; margin-right: 4px; border: 1px solid #ddd; border-radius: 3px; transition: all 0.2s ease; display: inline-block; text-align: center; width: 24px; height: 24px; line-height: 16px;";\
-            shopLink.onmouseover = function() { this.style.borderColor = "#999"; this.style.backgroundColor = "#f5f5f5"; };\
-            shopLink.onmouseout = function() { this.style.borderColor = "#ddd"; this.style.backgroundColor = "transparent"; };\
+            shopLink.innerHTML = "Shop";\
+            shopLink.style.cssText = "background-color: #ff6b35; color: white; text-decoration: none; padding: 6px 12px; border-radius: 4px; font-size: 12px; margin-left: 8px; transition: all 0.2s ease;";\
+            shopLink.onmouseover = function() { this.style.backgroundColor = "#e55a2b"; this.style.transform = "translateY(-1px)"; };\
+            shopLink.onmouseout = function() { this.style.backgroundColor = "#ff6b35"; this.style.transform = "translateY(0)"; };\
             \
             const repoLink = document.createElement("a");\
             repoLink.href = "https://github.com/UNIT-Electronics-MX/unit_jun_r3_development_board";\
             repoLink.target = "_blank";\
-            repoLink.innerHTML = "📋";\
-            repoLink.title = "Repository";\
-            repoLink.style.cssText = "color: #666; text-decoration: none; padding: 4px; font-size: 14px; margin-right: 4px; border: 1px solid #ddd; border-radius: 3px; transition: all 0.2s ease; display: inline-block; text-align: center; width: 24px; height: 24px; line-height: 16px;";\
-            repoLink.onmouseover = function() { this.style.borderColor = "#999"; this.style.backgroundColor = "#f5f5f5"; };\
-            repoLink.onmouseout = function() { this.style.borderColor = "#ddd"; this.style.backgroundColor = "transparent"; };\
+            repoLink.innerHTML = "Repository";\
+            repoLink.style.cssText = "background-color: #24292e; color: white; text-decoration: none; padding: 6px 12px; border-radius: 4px; font-size: 12px; margin-left: 8px; transition: all 0.2s ease;";\
+            repoLink.onmouseover = function() { this.style.backgroundColor = "#1a1e22"; this.style.transform = "translateY(-1px)"; };\
+            repoLink.onmouseout = function() { this.style.backgroundColor = "#24292e"; this.style.transform = "translateY(0)"; };\
             \
-            menuBar.insertBefore(repoLink, menuBar.firstChild);\
-            menuBar.insertBefore(shopLink, menuBar.firstChild);\
+            menuBar.appendChild(shopLink);\
+            menuBar.appendChild(repoLink);\
         }\
     }, 100);\
 });\

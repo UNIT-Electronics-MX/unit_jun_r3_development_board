@@ -103,7 +103,7 @@ jobs:
         if git diff --staged --quiet; then
           echo "No changes to commit in docs/"
         else
-          git commit -m "🚀 Auto-update documentation in docs/
+          git commit -m " Auto-update documentation in docs/
 
           - Built from latest README content
           - Generated: $(date)

@@ -219,8 +219,8 @@ def extract_content_without_main_title(content: str, page_title: str) -> str:
     result = re.sub(r'\n\s*\n\s*\n+', '\n\n', result)
     
     # Fix image paths
-    result = re.sub(r'hardware/resources/', './resources/', result)
-    result = re.sub(r'\.\./\.\./\.\./\.\./hardware/resources/', './resources/', result)
+    result = re.sub(r'hardware/resources/', 'resources/', result)
+    result = re.sub(r'\.\./\.\./\.\./\.\./hardware/resources/', 'resources/', result)
     
     # Preserve external links and fix local paths
     result = preserve_external_links(result)
@@ -246,9 +246,11 @@ def process_main_readme() -> str:
     # Extract content after the main title
     extracted = extract_content_without_main_title(content, "Introduction")
     
-    # For introduction.md, fix paths to use ./resources/ instead of ../resources/
-    extracted = re.sub(r'src="\.\./resources/', 'src="./resources/', extracted)
-    extracted = re.sub(r'href="\.\./resources/', 'href="./resources/', extracted)
+    # For introduction.md, fix paths to use resources/ (relative to src directory)
+    extracted = re.sub(r'src="\.\./resources/', 'src="resources/', extracted)
+    extracted = re.sub(r'href="\.\./resources/', 'href="resources/', extracted)
+    extracted = re.sub(r'src="\./', 'src="resources/', extracted)
+    extracted = re.sub(r'href="\./', 'href="resources/', extracted)
     
     return f"# {project_title}\n\n{extracted}"
 
