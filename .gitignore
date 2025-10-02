@@ -21,6 +21,11 @@ software/book/*
 *.temp
 docs/.temp/
 
+# GitHub Scripts temporary files
+.github/scripts/*.tmp
+.github/scripts/*.log
+.github/scripts/temp/
+
 # Python cache
 __pycache__/
 *.pyc
