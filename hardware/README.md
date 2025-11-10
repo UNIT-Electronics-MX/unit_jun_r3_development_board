@@ -44,6 +44,22 @@
 
 </div>
 
+## Block Diagram
+
+<div align="center">
+    <a href="./resources/unit_block-diagram_v_0_0_1_ue0081_Jun-R3.png"><img src="./resources/unit_block-diagram_v_0_0_1_ue0081_Jun-R3.png" width="500px"><br/>Block Diagram</a>
+    <br/><br/>
+
+</div>
+
+## Power Tree 
+
+<div align="center">
+    <a href="./resources/unit_power-tree_v_0_0_1_ue0081_Jun-R3.png"><img src="./resources/unit_power-tree_v_0_0_1_ue0081_Jun-R3.png" width="500px"><br/>Power Tree</a>
+    <br/><br/>
+
+</div>
+
 ## Electrical Characteristics 
 
 ### Power Consumption
