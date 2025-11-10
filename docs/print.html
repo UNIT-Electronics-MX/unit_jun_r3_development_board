@@ -229,27 +229,6 @@ Please refer to <a href="LICENSE.html"><code>LICENSE.md</code></a> for full term
     <div align="center"><a href="hardware/../resources/unit_sch_v_0_0_1_ue0081_Jun-R3.pdf"><img src="hardware/../resources/schematics_icon.jpg" style="max-width: 500px; height: auto;" alt="Schematics"><br/> Schematics</a></div>
     <br/>
 </div>
-<h2 id="electrical"><a class="header" href="#electrical">Electrical</a></h2>
-<h3 id="power-consumption"><a class="header" href="#power-consumption">Power Consumption</a></h3>
-<div class="table-wrapper"><table><thead><tr><th>Symbol</th><th>Description</th><th>Min</th><th>Typ</th><th>Max</th><th>Unit</th><th>Condition</th></tr></thead><tbody>
-<tr><td>V_IN max</td><td>Maximum input voltage (VIN pin/jack)</td><td>7</td><td>—</td><td>20</td><td>V</td><td>External DC jack input</td></tr>
-<tr><td>V_USB max</td><td>Maximum input voltage (USB-C port)</td><td>—</td><td>—</td><td>5.5</td><td>V</td><td>USB-C connector</td></tr>
-<tr><td>P_max</td><td>Maximum power consumption (board)</td><td>—</td><td>—</td><td>xx</td><td>mA</td><td>Board level</td></tr>
-<tr><td>I_max</td><td>Maximum current (board level)</td><td>1.7</td><td>2</td><td>2.1</td><td>A</td><td>Total consumption</td></tr>
-<tr><td>I_3V3</td><td>Current available at 3.3 V rail</td><td>—</td><td>600</td><td>—</td><td>mA</td><td>Regulator output</td></tr>
-<tr><td>IOH Max</td><td>Output high current per GPIO</td><td>—</td><td>—</td><td>8</td><td>mA</td><td>At VDD – 0.4 V (VOH)</td></tr>
-<tr><td>IOL Max</td><td>Output low current per GPIO</td><td>—</td><td>—</td><td>8</td><td>mA</td><td>At VSS + 0.4 V (VOL)</td></tr>
-</tbody></table>
-</div>
-<h3 id="dc-characteristics-atmega328"><a class="header" href="#dc-characteristics-atmega328">DC Characteristics ATmega328</a></h3>
-<p><em>(TA = –40 °C to +125 °C, VCC = 2.7 V to 5.5 V)</em></p>
-<div class="table-wrapper"><table><thead><tr><th>Parameter</th><th>Condition</th><th>Symbol</th><th>Min</th><th>Typ</th><th>Max</th><th>Unit</th></tr></thead><tbody>
-<tr><td>Input low voltage (except XTAL1, RESET)</td><td>VCC = 2.7 V to 5.5 V</td><td>VIL</td><td>–0.5</td><td>—</td><td>0.3 VCC</td><td>V</td></tr>
-<tr><td>Input high voltage (except XTAL1, RESET)</td><td>VCC = 2.7 V to 5.5 V</td><td>VIH</td><td>0.6 VCC</td><td>—</td><td>VCC+0.5</td><td>V</td></tr>
-<tr><td>Input low voltage (XTAL1 pin)</td><td>VCC = 2.7 V to 5.5 V</td><td>VIL1</td><td>–0.5</td><td>—</td><td>0.1 VCC</td><td>V</td></tr>
-<tr><td>Input high voltage (XTAL1 pin)</td><td>VCC = 2.7 V to 5.5 V</td><td>VIH1</td><td>0.7 VCC</td><td>—</td><td>VCC+0.5</td><td>V</td></tr>
-</tbody></table>
-</div>
 <h2 id="pinout"><a class="header" href="#pinout">Pinout</a></h2>
 <div align="center">
     <div align="center"><a href="hardware/../resources/unit_pinout_v_0_0_1_ue0081_unit_jun_r3_en.jpg"><img src="hardware/../resources/unit_pinout_v_0_0_1_ue0081_unit_jun_r3_en.png" style="max-width: 500px; height: auto;" alt="Pinout"><br/> Pinout</a></div>
@@ -282,10 +261,29 @@ Please refer to <a href="LICENSE.html"><code>LICENSE.md</code></a> for full term
 <tr><td>GND</td><td>Ground – Common reference</td></tr>
 </tbody></table>
 </div></div>
-<h2 id="board-dimensions"><a class="header" href="#board-dimensions">Board Dimensions</a></h2>
+<h2 id="electrical-characteristics"><a class="header" href="#electrical-characteristics">Electrical Characteristics</a></h2>
+<h3 id="power-consumption"><a class="header" href="#power-consumption">Power Consumption</a></h3>
 <div align="center">
-    <div align="center"><a href="hardware/../resources/unit_dimension_v_0_0_1_ue0081_jun_r3.png"><img src="hardware/../resources/unit_dimension_v_0_0_1_ue0081_jun_r3.png" style="max-width: 500px; height: auto;" alt="Dimensions"><br/> Dimensions</a></div>
-</div>
+<div class="table-wrapper"><table><thead><tr><th>Symbol</th><th>Description</th><th>Min</th><th>Typ</th><th>Max</th><th>Unit</th><th>Condition</th></tr></thead><tbody>
+<tr><td>V_IN max</td><td>Maximum input voltage (VIN pin/jack)</td><td>7</td><td>—</td><td>20</td><td>V</td><td>External DC jack input</td></tr>
+<tr><td>V_USB max</td><td>Maximum input voltage (USB-C port)</td><td>—</td><td>—</td><td>5.5</td><td>V</td><td>USB-C connector</td></tr>
+<tr><td>P_max</td><td>Maximum power Output (5V)</td><td>—</td><td>—</td><td>10</td><td>W</td><td>5V Output</td></tr>
+<tr><td>I_max</td><td>Maximum current (board level)</td><td>1.7</td><td>2</td><td>2.1</td><td>A</td><td>Total consumption</td></tr>
+<tr><td>I_3V3</td><td>Current available at 3.3 V rail</td><td>—</td><td>600</td><td>—</td><td>mA</td><td>Regulator output</td></tr>
+<tr><td>IOH Max</td><td>Output high current per GPIO</td><td>—</td><td>—</td><td>8</td><td>mA</td><td>At VDD – 0.4 V (VOH)</td></tr>
+<tr><td>IOL Max</td><td>Output low current per GPIO</td><td>—</td><td>—</td><td>8</td><td>mA</td><td>At VSS + 0.4 V (VOL)</td></tr>
+</tbody></table>
+</div></div>
+<h3 id="dc-characteristics-atmega328"><a class="header" href="#dc-characteristics-atmega328">DC Characteristics ATmega328</a></h3>
+<p><em>(TA = –40 °C to +125 °C, VCC = 2.7 V to 5.5 V)</em></p>
+<div align="center">
+<div class="table-wrapper"><table><thead><tr><th>Parameter</th><th>Condition</th><th>Symbol</th><th>Min</th><th>Typ</th><th>Max</th><th>Unit</th></tr></thead><tbody>
+<tr><td>Input low voltage (except XTAL1, RESET)</td><td>VCC = 2.7 V to 5.5 V</td><td>VIL</td><td>–0.5</td><td>—</td><td>0.3 VCC</td><td>V</td></tr>
+<tr><td>Input high voltage (except XTAL1, RESET)</td><td>VCC = 2.7 V to 5.5 V</td><td>VIH</td><td>0.6 VCC</td><td>—</td><td>VCC+0.5</td><td>V</td></tr>
+<tr><td>Input low voltage (XTAL1 pin)</td><td>VCC = 2.7 V to 5.5 V</td><td>VIL1</td><td>–0.5</td><td>—</td><td>0.1 VCC</td><td>V</td></tr>
+<tr><td>Input high voltage (XTAL1 pin)</td><td>VCC = 2.7 V to 5.5 V</td><td>VIH1</td><td>0.7 VCC</td><td>—</td><td>VCC+0.5</td><td>V</td></tr>
+</tbody></table>
+</div></div>
 <h2 id="board-topology"><a class="header" href="#board-topology">Board Topology</a></h2>
 <div align="center">
     <div align="center"><a href="hardware/../resources/unit_topology_v_0_0_1_ue0081_jun_r3.png"><img src="hardware/../resources/unit_topology_v_0_0_1_ue0081_jun_r3.png" style="max-width: 500px; height: auto;" alt="Topology"><br/> Topology</a></div>
@@ -309,26 +307,10 @@ Please refer to <a href="LICENSE.html"><code>LICENSE.md</code></a> for full term
 <tr><td>JP4</td><td>Header for GPIOs (Analog)</td></tr>
 <tr><td>JP5</td><td>Header for GPIOs (SPI)</td></tr>
 </tbody></table>
-</div></div><div style="break-before: page; page-break-before: always;"></div><h1 id="electrical-1"><a class="header" href="#electrical-1">Electrical</a></h1>
-<h3 id="power-consumption-1"><a class="header" href="#power-consumption-1">Power Consumption</a></h3>
-<div class="table-wrapper"><table><thead><tr><th>Symbol</th><th>Description</th><th>Min</th><th>Typ</th><th>Max</th><th>Unit</th><th>Condition</th></tr></thead><tbody>
-<tr><td>V_IN max</td><td>Maximum input voltage (VIN pin/jack)</td><td>7</td><td>—</td><td>20</td><td>V</td><td>External DC jack input</td></tr>
-<tr><td>V_USB max</td><td>Maximum input voltage (USB-C port)</td><td>—</td><td>—</td><td>5.5</td><td>V</td><td>USB-C connector</td></tr>
-<tr><td>P_max</td><td>Maximum power consumption (board)</td><td>—</td><td>—</td><td>xx</td><td>mA</td><td>Board level</td></tr>
-<tr><td>I_max</td><td>Maximum current (board level)</td><td>1.7</td><td>2</td><td>2.1</td><td>A</td><td>Total consumption</td></tr>
-<tr><td>I_3V3</td><td>Current available at 3.3 V rail</td><td>—</td><td>600</td><td>—</td><td>mA</td><td>Regulator output</td></tr>
-<tr><td>IOH Max</td><td>Output high current per GPIO</td><td>—</td><td>—</td><td>8</td><td>mA</td><td>At VDD – 0.4 V (VOH)</td></tr>
-<tr><td>IOL Max</td><td>Output low current per GPIO</td><td>—</td><td>—</td><td>8</td><td>mA</td><td>At VSS + 0.4 V (VOL)</td></tr>
-</tbody></table>
-</div>
-<h3 id="dc-characteristics-atmega328-1"><a class="header" href="#dc-characteristics-atmega328-1">DC Characteristics ATmega328</a></h3>
-<p><em>(TA = –40 °C to +125 °C, VCC = 2.7 V to 5.5 V)</em></p>
-<div class="table-wrapper"><table><thead><tr><th>Parameter</th><th>Condition</th><th>Symbol</th><th>Min</th><th>Typ</th><th>Max</th><th>Unit</th></tr></thead><tbody>
-<tr><td>Input low voltage (except XTAL1, RESET)</td><td>VCC = 2.7 V to 5.5 V</td><td>VIL</td><td>–0.5</td><td>—</td><td>0.3 VCC</td><td>V</td></tr>
-<tr><td>Input high voltage (except XTAL1, RESET)</td><td>VCC = 2.7 V to 5.5 V</td><td>VIH</td><td>0.6 VCC</td><td>—</td><td>VCC+0.5</td><td>V</td></tr>
-<tr><td>Input low voltage (XTAL1 pin)</td><td>VCC = 2.7 V to 5.5 V</td><td>VIL1</td><td>–0.5</td><td>—</td><td>0.1 VCC</td><td>V</td></tr>
-<tr><td>Input high voltage (XTAL1 pin)</td><td>VCC = 2.7 V to 5.5 V</td><td>VIH1</td><td>0.7 VCC</td><td>—</td><td>VCC+0.5</td><td>V</td></tr>
-</tbody></table>
+</div></div>
+<h2 id="board-dimensions"><a class="header" href="#board-dimensions">Board Dimensions</a></h2>
+<div align="center">
+    <div align="center"><a href="hardware/../resources/unit_dimension_v_0_0_1_ue0081_jun_r3.png"><img src="hardware/../resources/unit_dimension_v_0_0_1_ue0081_jun_r3.png" style="max-width: 500px; height: auto;" alt="Dimensions"><br/> Dimensions</a></div>
 </div><div style="break-before: page; page-break-before: always;"></div><h1 id="pinout-1"><a class="header" href="#pinout-1">Pinout</a></h1>
 <div align="center">
     <div align="center"><a href="hardware/../resources/unit_pinout_v_0_0_1_ue0081_unit_jun_r3_en.jpg"><img src="hardware/../resources/unit_pinout_v_0_0_1_ue0081_unit_jun_r3_en.png" style="max-width: 500px; height: auto;" alt="Pinout"><br/> Pinout</a></div>
@@ -360,10 +342,29 @@ Please refer to <a href="LICENSE.html"><code>LICENSE.md</code></a> for full term
 <tr><td>VCC</td><td>Power Supply – 5V/3.3V (design)</td></tr>
 <tr><td>GND</td><td>Ground – Common reference</td></tr>
 </tbody></table>
-</div></div><div style="break-before: page; page-break-before: always;"></div><h1 id="board-dimensions-1"><a class="header" href="#board-dimensions-1">Board Dimensions</a></h1>
+</div></div><div style="break-before: page; page-break-before: always;"></div><h1 id="electrical-characteristics-1"><a class="header" href="#electrical-characteristics-1">Electrical Characteristics</a></h1>
+<h3 id="power-consumption-1"><a class="header" href="#power-consumption-1">Power Consumption</a></h3>
 <div align="center">
-    <div align="center"><a href="hardware/../resources/unit_dimension_v_0_0_1_ue0081_jun_r3.png"><img src="hardware/../resources/unit_dimension_v_0_0_1_ue0081_jun_r3.png" style="max-width: 500px; height: auto;" alt="Dimensions"><br/> Dimensions</a></div>
-</div><div style="break-before: page; page-break-before: always;"></div><h1 id="board-topology-1"><a class="header" href="#board-topology-1">Board Topology</a></h1>
+<div class="table-wrapper"><table><thead><tr><th>Symbol</th><th>Description</th><th>Min</th><th>Typ</th><th>Max</th><th>Unit</th><th>Condition</th></tr></thead><tbody>
+<tr><td>V_IN max</td><td>Maximum input voltage (VIN pin/jack)</td><td>7</td><td>—</td><td>20</td><td>V</td><td>External DC jack input</td></tr>
+<tr><td>V_USB max</td><td>Maximum input voltage (USB-C port)</td><td>—</td><td>—</td><td>5.5</td><td>V</td><td>USB-C connector</td></tr>
+<tr><td>P_max</td><td>Maximum power Output (5V)</td><td>—</td><td>—</td><td>10</td><td>W</td><td>5V Output</td></tr>
+<tr><td>I_max</td><td>Maximum current (board level)</td><td>1.7</td><td>2</td><td>2.1</td><td>A</td><td>Total consumption</td></tr>
+<tr><td>I_3V3</td><td>Current available at 3.3 V rail</td><td>—</td><td>600</td><td>—</td><td>mA</td><td>Regulator output</td></tr>
+<tr><td>IOH Max</td><td>Output high current per GPIO</td><td>—</td><td>—</td><td>8</td><td>mA</td><td>At VDD – 0.4 V (VOH)</td></tr>
+<tr><td>IOL Max</td><td>Output low current per GPIO</td><td>—</td><td>—</td><td>8</td><td>mA</td><td>At VSS + 0.4 V (VOL)</td></tr>
+</tbody></table>
+</div></div>
+<h3 id="dc-characteristics-atmega328-1"><a class="header" href="#dc-characteristics-atmega328-1">DC Characteristics ATmega328</a></h3>
+<p><em>(TA = –40 °C to +125 °C, VCC = 2.7 V to 5.5 V)</em></p>
+<div align="center">
+<div class="table-wrapper"><table><thead><tr><th>Parameter</th><th>Condition</th><th>Symbol</th><th>Min</th><th>Typ</th><th>Max</th><th>Unit</th></tr></thead><tbody>
+<tr><td>Input low voltage (except XTAL1, RESET)</td><td>VCC = 2.7 V to 5.5 V</td><td>VIL</td><td>–0.5</td><td>—</td><td>0.3 VCC</td><td>V</td></tr>
+<tr><td>Input high voltage (except XTAL1, RESET)</td><td>VCC = 2.7 V to 5.5 V</td><td>VIH</td><td>0.6 VCC</td><td>—</td><td>VCC+0.5</td><td>V</td></tr>
+<tr><td>Input low voltage (XTAL1 pin)</td><td>VCC = 2.7 V to 5.5 V</td><td>VIL1</td><td>–0.5</td><td>—</td><td>0.1 VCC</td><td>V</td></tr>
+<tr><td>Input high voltage (XTAL1 pin)</td><td>VCC = 2.7 V to 5.5 V</td><td>VIH1</td><td>0.7 VCC</td><td>—</td><td>VCC+0.5</td><td>V</td></tr>
+</tbody></table>
+</div></div><div style="break-before: page; page-break-before: always;"></div><h1 id="board-topology-1"><a class="header" href="#board-topology-1">Board Topology</a></h1>
 <div align="center">
     <div align="center"><a href="hardware/../resources/unit_topology_v_0_0_1_ue0081_jun_r3.png"><img src="hardware/../resources/unit_topology_v_0_0_1_ue0081_jun_r3.png" style="max-width: 500px; height: auto;" alt="Topology"><br/> Topology</a></div>
 <div class="table-wrapper"><table><thead><tr><th>Ref.</th><th>Description</th></tr></thead><tbody>
@@ -386,7 +387,10 @@ Please refer to <a href="LICENSE.html"><code>LICENSE.md</code></a> for full term
 <tr><td>JP4</td><td>Header for GPIOs (Analog)</td></tr>
 <tr><td>JP5</td><td>Header for GPIOs (SPI)</td></tr>
 </tbody></table>
-</div></div><div style="break-before: page; page-break-before: always;"></div><h1 id="getting-started"><a class="header" href="#getting-started">Getting Started</a></h1>
+</div></div><div style="break-before: page; page-break-before: always;"></div><h1 id="board-dimensions-1"><a class="header" href="#board-dimensions-1">Board Dimensions</a></h1>
+<div align="center">
+    <div align="center"><a href="hardware/../resources/unit_dimension_v_0_0_1_ue0081_jun_r3.png"><img src="hardware/../resources/unit_dimension_v_0_0_1_ue0081_jun_r3.png" style="max-width: 500px; height: auto;" alt="Dimensions"><br/> Dimensions</a></div>
+</div><div style="break-before: page; page-break-before: always;"></div><h1 id="getting-started"><a class="header" href="#getting-started">Getting Started</a></h1>
 <h2 id="quick-start-guide"><a class="header" href="#quick-start-guide">Quick Start Guide</a></h2>
 <h3 id="1-hardware-setup"><a class="header" href="#1-hardware-setup">1. Hardware Setup</a></h3>
 <ol>
