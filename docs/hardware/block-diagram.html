@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Overview</title>
+        <title>Block Diagram</title>
 
 
         <!-- Custom HTML head -->
@@ -175,113 +175,20 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="hardware-overview"><a class="header" href="#hardware-overview">Hardware Overview</a></h1>
-<div align="center">
-    <div align="center"><a href="../resources/unit_sch_v_0_0_1_ue0081_Jun-R3.pdf"><img src="../resources/schematics_icon.jpg" style="max-width: 500px; height: auto;" alt="Schematics"><br/> Schematics</a></div>
-    <br/>
-</div>
-<h2 id="pinout"><a class="header" href="#pinout">Pinout</a></h2>
-<div align="center">
-    <div align="center"><a href="../resources/unit_pinout_v_0_0_1_ue0081_unit_jun_r3_en.jpg"><img src="../resources/unit_pinout_v_0_0_1_ue0081_unit_jun_r3_en.png" style="max-width: 500px; height: auto;" alt="Pinout"><br/> Pinout</a></div>
-    <br/><br/>
-</div>
-<div align="center">
-<h3 id="pinout-details"><a class="header" href="#pinout-details"><strong>Pinout Details</strong></a></h3>
-<div class="table-wrapper"><table><thead><tr><th>Pin Label</th><th>Function / Notes</th></tr></thead><tbody>
-<tr><td>D0</td><td>RX – Serial Receive</td></tr>
-<tr><td>D1</td><td>TX – Serial Transmit</td></tr>
-<tr><td>D2</td><td>Digital I/O – Interrupt capable</td></tr>
-<tr><td>D3</td><td>PWM – Pulse Width Modulation</td></tr>
-<tr><td>D4</td><td>Digital I/O</td></tr>
-<tr><td>D5</td><td>PWM – Pulse Width Modulation</td></tr>
-<tr><td>D6</td><td>PWM – Pulse Width Modulation</td></tr>
-<tr><td>D7</td><td>Digital I/O</td></tr>
-<tr><td>D8</td><td>Digital I/O</td></tr>
-<tr><td>D9</td><td>PWM – Pulse Width Modulation</td></tr>
-<tr><td>D10</td><td>SPI CS – Chip Select</td></tr>
-<tr><td>D11</td><td>SPI MOSI – Master Out Slave In</td></tr>
-<tr><td>D12</td><td>SPI MISO – Master In Slave Out</td></tr>
-<tr><td>D13</td><td>SPI SCK – Serial Clock</td></tr>
-<tr><td>A0</td><td>Analog Input – 10-bit ADC</td></tr>
-<tr><td>A1</td><td>Analog Input – 10-bit ADC</td></tr>
-<tr><td>A2</td><td>Analog Input – 10-bit ADC</td></tr>
-<tr><td>A3</td><td>Analog Input – 10-bit ADC</td></tr>
-<tr><td>A4</td><td>I2C SDA – Serial Data Line</td></tr>
-<tr><td>A5</td><td>I2C SCL – Serial Clock Line</td></tr>
-<tr><td>VCC</td><td>Power Supply – 5V/3.3V (design)</td></tr>
-<tr><td>GND</td><td>Ground – Common reference</td></tr>
-</tbody></table>
-</div></div>
-<h2 id="block-diagram"><a class="header" href="#block-diagram">Block Diagram</a></h2>
+                        <h1 id="block-diagram"><a class="header" href="#block-diagram">Block Diagram</a></h1>
 <div align="center">
     <div align="center"><a href="../resources/unit_block-diagram_v_0_0_1_ue0081_Jun-R3.png"><img src="../resources/unit_block-diagram_v_0_0_1_ue0081_Jun-R3.png" style="max-width: 500px; height: auto;" alt="Block Diagram"><br/> Block Diagram</a></div>
     <br/><br/>
-</div>
-<h2 id="power-tree"><a class="header" href="#power-tree">Power Tree</a></h2>
-<div align="center">
-    <div align="center"><a href="../resources/unit_power-tree_v_0_0_1_ue0081_Jun-R3.png"><img src="../resources/unit_power-tree_v_0_0_1_ue0081_Jun-R3.png" style="max-width: 500px; height: auto;" alt="Power Tree"><br/> Power Tree</a></div>
-    <br/><br/>
-</div>
-<h2 id="electrical-characteristics"><a class="header" href="#electrical-characteristics">Electrical Characteristics</a></h2>
-<h3 id="power-consumption"><a class="header" href="#power-consumption">Power Consumption</a></h3>
-<div align="center">
-<div class="table-wrapper"><table><thead><tr><th>Symbol</th><th>Description</th><th>Min</th><th>Typ</th><th>Max</th><th>Unit</th><th>Condition</th></tr></thead><tbody>
-<tr><td>V_IN max</td><td>Maximum input voltage (VIN pin/jack)</td><td>7</td><td>—</td><td>20</td><td>V</td><td>External DC jack input</td></tr>
-<tr><td>V_USB max</td><td>Maximum input voltage (USB-C port)</td><td>—</td><td>—</td><td>5.5</td><td>V</td><td>USB-C connector</td></tr>
-<tr><td>P_max</td><td>Maximum power Output (5V)</td><td>—</td><td>—</td><td>10</td><td>W</td><td>5V Output</td></tr>
-<tr><td>I_max</td><td>Maximum current (board level)</td><td>1.7</td><td>2</td><td>2.1</td><td>A</td><td>Total consumption</td></tr>
-<tr><td>I_3V3</td><td>Current available at 3.3 V rail</td><td>—</td><td>600</td><td>—</td><td>mA</td><td>Regulator output</td></tr>
-<tr><td>IOH Max</td><td>Output high current per GPIO</td><td>—</td><td>—</td><td>8</td><td>mA</td><td>At VDD – 0.4 V (VOH)</td></tr>
-<tr><td>IOL Max</td><td>Output low current per GPIO</td><td>—</td><td>—</td><td>8</td><td>mA</td><td>At VSS + 0.4 V (VOL)</td></tr>
-</tbody></table>
-</div></div>
-<h3 id="dc-characteristics-atmega328"><a class="header" href="#dc-characteristics-atmega328">DC Characteristics ATmega328</a></h3>
-<p><em>(TA = –40 °C to +125 °C, VCC = 2.7 V to 5.5 V)</em></p>
-<div align="center">
-<div class="table-wrapper"><table><thead><tr><th>Parameter</th><th>Condition</th><th>Symbol</th><th>Min</th><th>Typ</th><th>Max</th><th>Unit</th></tr></thead><tbody>
-<tr><td>Input low voltage (except XTAL1, RESET)</td><td>VCC = 2.7 V to 5.5 V</td><td>VIL</td><td>–0.5</td><td>—</td><td>0.3 VCC</td><td>V</td></tr>
-<tr><td>Input high voltage (except XTAL1, RESET)</td><td>VCC = 2.7 V to 5.5 V</td><td>VIH</td><td>0.6 VCC</td><td>—</td><td>VCC+0.5</td><td>V</td></tr>
-<tr><td>Input low voltage (XTAL1 pin)</td><td>VCC = 2.7 V to 5.5 V</td><td>VIL1</td><td>–0.5</td><td>—</td><td>0.1 VCC</td><td>V</td></tr>
-<tr><td>Input high voltage (XTAL1 pin)</td><td>VCC = 2.7 V to 5.5 V</td><td>VIH1</td><td>0.7 VCC</td><td>—</td><td>VCC+0.5</td><td>V</td></tr>
-</tbody></table>
-</div></div>
-<h2 id="board-topology"><a class="header" href="#board-topology">Board Topology</a></h2>
-<div align="center">
-    <div align="center"><a href="../resources/unit_topology_v_0_0_1_ue0081_jun_r3.png"><img src="../resources/unit_topology_v_0_0_1_ue0081_jun_r3.png" style="max-width: 500px; height: auto;" alt="Topology"><br/> Topology</a></div>
-<div class="table-wrapper"><table><thead><tr><th>Ref.</th><th>Description</th></tr></thead><tbody>
-<tr><td>IC1</td><td>ATMEGA 328P Microcontroller</td></tr>
-<tr><td>IC2</td><td>CH340 USB to Serial Controller</td></tr>
-<tr><td>U1</td><td>MP1482 5V Step-Down Regulator</td></tr>
-<tr><td>U2</td><td>AP2112K 3.3V Regulator</td></tr>
-<tr><td>SW1</td><td>Reset Push Button</td></tr>
-<tr><td>L1</td><td>Built-In LED</td></tr>
-<tr><td>L2</td><td>Tx LED</td></tr>
-<tr><td>L3</td><td>Rx LED</td></tr>
-<tr><td>L4</td><td>Power On LED</td></tr>
-<tr><td>L5</td><td>Neopixel Matrix</td></tr>
-<tr><td>J1</td><td>USB Type-C Connector</td></tr>
-<tr><td>J2</td><td>5mm DC Barrel Power Jack</td></tr>
-<tr><td>J3</td><td>QWIIC Connector (JST 1mm)</td></tr>
-<tr><td>JP1</td><td>Header for GPIOs</td></tr>
-<tr><td>JP2</td><td>Header for GPIOs</td></tr>
-<tr><td>JP3</td><td>Header for Power Supply and System Functions</td></tr>
-<tr><td>JP4</td><td>Header for GPIOs (Analog)</td></tr>
-<tr><td>JP5</td><td>Header for GPIOs (SPI)</td></tr>
-</tbody></table>
-</div></div>
-<h2 id="board-dimensions"><a class="header" href="#board-dimensions">Board Dimensions</a></h2>
-<div align="center">
-    <div align="center"><a href="../resources/unit_dimension_v_0_0_1_ue0081_jun_r3.png"><img src="../resources/unit_dimension_v_0_0_1_ue0081_jun_r3.png" style="max-width: 500px; height: auto;" alt="Dimensions"><br/> Dimensions</a></div>
 </div>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../introduction.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../hardware/pinout.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../hardware/pinout.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../hardware/power-tree.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -291,11 +198,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../introduction.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../hardware/pinout.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../hardware/pinout.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../hardware/power-tree.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
