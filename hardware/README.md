@@ -71,11 +71,11 @@
 | V_USB max | Maximum input voltage (USB-C port)   | —   | —   | 5.5 | V    | USB-C connector        |
 | P_max     | Maximum power Output (5V)            | —   | —   | 10  | W    | 5V Output              |
 | I_max     | Maximum current (board level)        | 1.7 | 2   | 2.1 | A    | Total consumption      |
-| I_3V3     | Current available at 3.3 V rail      | —   | -   | 600 | mA   | Regulator output       |
+| I_3V3     | Current available at 3.3 V rail      | —   | —   | 600 | mA   | Regulator output       |
 | IOH Max   | Output high current per GPIO         | —   | —   | 8   | mA   | At VDD – 0.4 V (VOH)   |
 | IOL Max   | Output low current per GPIO          | —   | —   | 8   | mA   | At VSS + 0.4 V (VOL)   |
 
-***Note:** For a better performance of the maximum current levels, consider using an efficient thermal management. 
+***Note:** For optimal performance at maximum current levels, consider implementing efficient thermal management. 
 
 </div>
 
