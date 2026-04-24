@@ -10,23 +10,25 @@
 
 
 
-<div align="center">
 
 ### Quick Setup
 
 
+<div align="center">
 
-[<img src="https://img.shields.io/badge/Product%20Wiki-blue?style=for-the-badge" alt="Product Wiki">](https://unit-electronics-mx.github.io/unit_jun_r3_development_board/introduction.html)
-[<img src="https://img.shields.io/badge/Datasheet-green?style=for-the-badge" alt="Datasheet">](https://unit-electronics-mx.github.io/unit_jun_r3_development_board/hardware/unit_product_v_1_0_0_junr3.pdf)
+[<img src="https://img.shields.io/badge/Product%20Wiki-blue?style=for-the-badge" alt="Product Wiki">](https://wiki.uelectronics.com/wiki/jun-r3-development-board)
+[<img src="https://img.shields.io/badge/Datasheet-green?style=for-the-badge" alt="Datasheet">]()
 [<img src="https://img.shields.io/badge/Buy%20Now-orange?style=for-the-badge" alt="Buy Now">](https://uelectronics.com/)
 [<img src="https://img.shields.io/badge/Getting%20Started-purple?style=for-the-badge" alt="Getting Started">](https://unit-electronics-mx.github.io/unit_jun_r3_development_board/software/getting-started.html)
 
 </div>
 
 
-<div align="center" >
+
 
 ## Overview
+
+<div align="center" >
 
 | Feature           | Description                                         |
 |-------------------|-----------------------------------------------------|
@@ -51,12 +53,6 @@
 - **Wearables:** Small size and versatile power make it suitable for wearable devices.
 - **Interactive Displays:** Use the built-in NeoPixel matrix for engaging visual output.
 
-
-## Resources
-
-- [Schematic Diagram](hardware/unit_sch_v_0_0_1_ue0081_Jun-R3.pdf)
-- [Pinout Diagram](hardware/resources/pinout/unit_pinout_v_0_0_1_ue0081_unit_jun_r3_en.jpg)
-- [Getting Started Guide](https://unit-electronics-mx.github.io/unit_jun_r3_development_board/software/getting-started.html)
 
 
 ## 📝 License
