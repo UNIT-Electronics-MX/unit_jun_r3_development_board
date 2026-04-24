@@ -1,4 +1,4 @@
-# Demo2 OLED - OLED Display with Sensor Readings
+# CPP Example 02 - OLED Sensor Display
 
 ## Description
 Combines OLED display functionality with NeoPixel LEDs to show sensor readings and create interactive visual feedback.

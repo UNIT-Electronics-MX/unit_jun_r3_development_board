@@ -1,4 +1,4 @@
-# Demo1 Neo - Basic NeoPixel Animations
+# CPP Example 01 - Neo Basic Animations
 
 ## Description
 Basic NeoPixel LED demonstrations with colorful animations and effects on a 25-LED strip.

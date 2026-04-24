@@ -1,4 +1,4 @@
-# Demo Text - Text Display on LED Matrix
+# CPP Example 04 - Matrix Text
 
 ## Description
 Displays scrolling text and characters on a 5x5 NeoPixel LED matrix using custom 3x5 pixel font.

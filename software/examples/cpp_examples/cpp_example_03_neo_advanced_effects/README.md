@@ -1,4 +1,4 @@
-# Demo3 Neo - Advanced NeoPixel Effects
+# CPP Example 03 - Neo Advanced Effects
 
 ## Description
 Advanced NeoPixel animations featuring complex lighting effects including bouncing dots, confetti, and smooth color transitions.
